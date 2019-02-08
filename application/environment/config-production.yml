@@ -1,0 +1,14 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+#  rootPath: /api/*
+#  applicationContextPath: /
+  adminConnectors:
+    - type: http
+      port: 9003
+
+database:
+  driverClass: org.postgresql.Driver
+  user: postgres
+  url: jdbc:postgresql://localhost:5432/books

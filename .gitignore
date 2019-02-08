@@ -1,0 +1,5 @@
+*.iml
+target
+*.idea
+application/secrets/
+dependency-reduced-pom.xml
