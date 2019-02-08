@@ -8,6 +8,7 @@ public class Offer extends Model {
         Offer offer = new Offer();
         offer.set("name", request.name);
         offer.set("price", request.price);
+        offer.set("currency", request.currency);
         offer.saveIt();
         return offer;
     }

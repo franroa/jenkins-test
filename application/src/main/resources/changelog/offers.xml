@@ -13,7 +13,11 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="price" type="VARCHAR(255)">
+            <column name="price" type="FLOAT">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="currency" type="VARCHAR(255)">
                 <constraints nullable="false" />
             </column>
         </createTable>
