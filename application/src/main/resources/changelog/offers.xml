@@ -8,6 +8,14 @@
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_offers" />
             </column>
+
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="price" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

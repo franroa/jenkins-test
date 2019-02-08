@@ -1,7 +1,6 @@
 package franroa.dto;
 
-public class OfferResponse {
-    public Long id;
+public class OfferRequest {
     public String name;
     public String price;
 }

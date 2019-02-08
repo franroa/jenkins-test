@@ -3,6 +3,7 @@ package franroa.feature;
 import franroa.OfferConfiguration;
 import franroa.container.Container;
 import franroa.exceptions.mappers.ResourceNotFoundExceptionMapper;
+import franroa.helper.TestRequest;
 import franroa.helper.TestResponse;
 import franroa.resources.OfferResource;
 import io.dropwizard.configuration.ConfigurationException;
@@ -16,12 +17,9 @@ import liquibase.exception.LiquibaseException;
 import liquibase.logging.LogFactory;
 import liquibase.logging.LogLevel;
 import liquibase.resource.ClassLoaderResourceAccessor;
-import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.javalite.activejdbc.Base;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.ClassRule;
 
 
@@ -43,27 +41,20 @@ public class FeatureTestEnvironment {
             .addResource(new ResourceNotFoundExceptionMapper())
             .build();
 
-    @BeforeClass
-    public static void setUp() throws Exception {
+    @Before
+    public void setUp() throws Exception {
         loadConfiguration();
         Container.instance(OfferConfiguration.class, config);
         openDatabaseConnection();
         migrate();
-    }
-
-    @AfterClass
-    public static void tearDown() throws Exception {
-        closeDatabaseConnection();
-    }
-
-    @Before
-    public void startTransaction() {
         Base.openTransaction();
     }
 
     @After
-    public void rollbackTransaction() {
+    public void tearDown() throws Exception {
         Base.rollbackTransaction();
+        closeDatabaseConnection();
+        Container.clear();
     }
 
     private static void openDatabaseConnection() {
@@ -85,26 +76,18 @@ public class FeatureTestEnvironment {
     }
 
     private static void migrate() throws LiquibaseException, SQLException {
-        if (migrated) {
-            return;
+        if(!migrated) {
+            LogFactory.getInstance().getLog().setLogLevel(LogLevel.WARNING);
+            Liquibase liquibase = new Liquibase("changelog/master.xml", new ClassLoaderResourceAccessor(), new JdbcConnection(Base.connection()));
+            liquibase.dropAll();
+            liquibase.update("");
+            Base.connection().setAutoCommit(true);
+            migrated = true;
         }
-
-        LogFactory.getInstance().getLog().setLogLevel(LogLevel.WARNING);
-        new Liquibase("changelog/master.xml", new ClassLoaderResourceAccessor(), new JdbcConnection(Base.connection())).update("");
-        Base.connection().setAutoCommit(true);
-        migrated = true;
     }
 
-    protected <T> TestResponse put(String target, Object request) {
-        return new TestResponse(requestTo(target).put(Entity.entity(request, MediaType.APPLICATION_JSON_TYPE)));
-    }
-
-    protected <T> TestResponse post(String target, Entity<T> entity) {
-        return new TestResponse(requestTo(target, entity).post(entity));
-    }
-
-    protected <T> TestResponse post(String target, Object request) {
-        return new TestResponse(requestTo(target).post(Entity.entity(request, MediaType.APPLICATION_JSON_TYPE)));
+    protected <T> TestResponse post(String target, TestRequest request) {
+        return new TestResponse(requestTo(target).post(Entity.json(request.getJson())));
     }
 
     protected TestResponse get(String target) {
@@ -113,9 +96,5 @@ public class FeatureTestEnvironment {
 
     private Invocation.Builder requestTo(String target) {
         return resources.client().target(target).request();
-    }
-
-    private <T> Invocation.Builder requestTo(String target, Entity<T> entity) {
-        return resources.client().register(MultiPartFeature.class).target(target).request();
     }
 }

@@ -1,11 +1,9 @@
 package franroa.helper;
 
 public class RequestFactory {
-    public static TestRequest withExpressionTranslations() {
+    public static TestRequest offer() {
         return new TestRequest()
-                .set("from_id", 10)
-                .set("to_id", 21)
-                .set("translation", "translated text")
-                .set("original_text", "original text to be translated");
+                .set("name", "New Offer")
+                .set("price", "4€");
     }
 }

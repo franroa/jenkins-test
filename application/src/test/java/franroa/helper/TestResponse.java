@@ -6,6 +6,7 @@ import org.assertj.core.api.Assertions;
 import org.assertj.core.api.IterableAssert;
 import org.junit.Assert;
 
+
 import javax.ws.rs.core.Response;
 
 public class TestResponse<T> {

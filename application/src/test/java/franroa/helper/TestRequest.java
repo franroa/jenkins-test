@@ -2,17 +2,14 @@ package franroa.helper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.glassfish.jersey.media.multipart.FormDataMultiPart;
-import org.glassfish.jersey.media.multipart.file.FileDataBodyPart;
-
-import java.io.File;
 
 public class TestRequest {
     private ObjectNode data;
     private ObjectNode currentNode;
 
     public TestRequest() {
-        this(new ObjectMapper().createObjectNode());
+        this.data = new ObjectMapper().createObjectNode();
+        resetCurrentNodeToOriginNode();
     }
 
     public TestRequest(ObjectNode data) {
@@ -41,10 +38,7 @@ public class TestRequest {
         currentNode = data;
     }
 
-    public FormDataMultiPart getEpubMultipart() {
-        final FileDataBodyPart filePart = new FileDataBodyPart("file", new File("src/test/resources/test-book.epub"));
-        final FormDataMultiPart multipart = new FormDataMultiPart();
-        multipart.bodyPart(filePart);
-        return multipart;
+    public Object getJson() {
+        return data;
     }
 }
