@@ -1,7 +1,7 @@
 package franroa.exceptions.mappers;
 
 
-import franroa.dto.error.ResourceNotFoundResponse;
+import franroa.api.error.ResourceNotFoundResponse;
 import franroa.exceptions.ResourceNotFoundException;
 
 import javax.ws.rs.core.Response;

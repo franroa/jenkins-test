@@ -1,7 +1,6 @@
 package franroa.core;
 
-import franroa.dto.OfferRequest;
-import org.javalite.activejdbc.Model;
+import franroa.api.OfferRequest;
 
 public class Offer extends Model {
     public static Offer buildFromRequest(OfferRequest request) {

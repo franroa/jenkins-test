@@ -15,15 +15,19 @@ public class ModelFactory {
         List<Offer> offers = new ArrayList<>();
 
         for (int i = 0; i < amount; i++) {
-            Offer offer = new Offer();
-            offer.set("name", faker.name().firstName());
-            offer.set("price", faker.number().randomNumber());
-            offer.set("currency", Currency.EUR.toString());
-            offer.saveIt();
-
-            offers.add(offer);
+            offers.add(offer());
         }
 
         return offers;
+    }
+
+    public static Offer offer() {
+        Offer offer = new Offer();
+        offer.set("name", faker.name().firstName());
+        offer.set("price", faker.number().randomNumber());
+        offer.set("currency", Currency.EUR.toString());
+        offer.saveIt();
+
+        return offer;
     }
 }
