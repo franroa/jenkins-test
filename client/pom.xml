@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>net.franroa.interview</groupId>
-            <artifactId>interview-dto</artifactId>
+            <artifactId>interview-api</artifactId>
             <version>0.0.1</version>
         </dependency>
     </dependencies>

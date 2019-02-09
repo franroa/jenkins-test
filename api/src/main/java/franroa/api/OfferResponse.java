@@ -1,4 +1,4 @@
-package franroa.dto;
+package franroa.api;
 
 public class OfferResponse {
     public Long id;

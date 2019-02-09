@@ -1,4 +1,4 @@
-package franroa.dto.error;
+package franroa.api.error;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

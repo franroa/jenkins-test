@@ -1,4 +1,4 @@
-package franroa.dto.enums;
+package franroa.api.enums;
 
 public enum Currency {
     EURO

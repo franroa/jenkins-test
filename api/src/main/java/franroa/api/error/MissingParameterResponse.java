@@ -1,4 +1,4 @@
-package franroa.dto.error;
+package franroa.api.error;
 
 import org.eclipse.jetty.http.HttpStatus;
 
