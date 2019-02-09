@@ -6,8 +6,6 @@ import franroa.api.OfferResponse;
 import franroa.core.Model;
 import franroa.core.Offer;
 import franroa.transformers.OfferTransformer;
-import org.eclipse.jetty.http.HttpStatus;
-import org.jboss.logging.Param;
 
 
 import javax.validation.Valid;
