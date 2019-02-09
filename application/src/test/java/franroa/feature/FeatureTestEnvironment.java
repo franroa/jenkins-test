@@ -96,6 +96,10 @@ public class FeatureTestEnvironment {
         return new TestResponse(requestTo(target).get());
     }
 
+    protected TestResponse delete(String target) {
+        return new TestResponse(requestTo(target).delete());
+    }
+
     private Invocation.Builder requestTo(String target) {
         return resources.client().target(target).request();
     }
