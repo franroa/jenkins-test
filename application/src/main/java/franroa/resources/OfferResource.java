@@ -18,6 +18,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.net.URI;
 import java.util.List;
 
 @Path("/v1/offers")
@@ -30,7 +31,7 @@ public class OfferResource {
 
         OfferResponse response = OfferTransformer.transform(offer);
 
-        return Response.ok().entity(response).build();
+        return Response.created(URI.create("/v1/offers/" + offer.getLongId())).entity(response).build();
     }
 
     @GET

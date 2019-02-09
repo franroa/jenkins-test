@@ -97,4 +97,8 @@ public class TestResponse<T> {
         assertStatus(HttpStatus.UNPROCESSABLE_ENTITY_422);
         assertDataInArrayNode("errors", errors);
     }
+
+    public void assertHeader(String key, String value) {
+        Assertions.assertThat(this.response.getHeaderString(key)).isEqualTo(value);
+    }
 }

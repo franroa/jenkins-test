@@ -35,13 +35,13 @@ public class CreateOfferTest extends FeatureTestEnvironment {
 
         TestResponse response = post("/v1/offers", request);
 
+        List<Offer> offers = Offer.findAll();
+        assertThat(offers).hasSize(1);
+        response.assertHeader("location", "http://localhost:9998/v1/offers/" + offers.get(0).getLongId());
         response.assertStatus(HttpStatus.OK_200);
-        //TODO assert location
         response.assertData("name", "Offer Name");
         response.assertData("price", "4");
         response.assertData("currency", Currency.EUR.toString());
-        List<Offer> offers = Offer.findAll();
-        assertThat(offers).hasSize(1);
         assertThat(offers.get(0).getString("name")).isEqualTo("Offer Name");
         assertThat(offers.get(0).getLong("price")).isEqualTo(4);
         assertThat(offers.get(0).getString("currency")).isEqualTo(Currency.EUR.toString());
