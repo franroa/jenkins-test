@@ -4,6 +4,7 @@ import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import franroa.api.enums.Currency;
 import franroa.core.Offer;
+import franroa.facades.Queue;
 import franroa.feature.FeatureTestEnvironment;
 import franroa.helper.RequestFactory;
 import franroa.helper.TestRequest;
@@ -25,7 +26,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 @RunWith(DataProviderRunner.class)
 public class CreateOfferTest extends FeatureTestEnvironment {
     @Test
-    public void stores_one_offer() throws IOException {
+    public void stores_one_offer_and_schedules_the_expiration() throws IOException {
         Timestamp expiresAt = Timestamp.from(Instant.ofEpochMilli(System.currentTimeMillis() + 5 * 60 * 1000));
         TestRequest request = new TestRequest();
         request.set("name", "Offer Name");

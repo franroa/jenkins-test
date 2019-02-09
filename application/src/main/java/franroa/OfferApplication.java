@@ -85,8 +85,7 @@ public class OfferApplication extends Application<OfferConfiguration> {
     private void runMigrations() {
         try {
             Connection.open();
-            Liquibase migrator = new Liquibase(MIGRATIONS_MASTER_FILE_PATH, new ClassLoaderResourceAccessor(), new JdbcConnection(Connection.get()));
-            migrator.update("");
+            new Liquibase(MIGRATIONS_MASTER_FILE_PATH, new ClassLoaderResourceAccessor(), new JdbcConnection(Connection.get())).update("");
         } catch (LiquibaseException e) {
             e.printStackTrace();
         } finally {

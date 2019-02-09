@@ -10,8 +10,8 @@ server:
 
 database:
   driverClass: org.postgresql.Driver
-  user: postgres
-  url: jdbc:postgresql://localhost:5432/books
+  user: sa
+  url: jdbc:postgresql://localhost:54322/interviewDB
 
 queue:
   type: "QUARTZ"
@@ -22,4 +22,4 @@ queue:
     org.quartz.jobStore.dataSource: queue
     org.quartz.jobStore.tablePrefix: "ZZ_QRTZ_"
     org.quartz.jobStore.isClustered: true
-    org.quartz.dataSource.queue.connectionProvider.class: com.franroa.queue.config.QueueConnectionProvider
+    org.quartz.dataSource.queue.connectionProvider.class: franroa.queue.config.QueueConnectionProvider
