@@ -20,6 +20,10 @@
             <column name="currency" type="VARCHAR(255)">
                 <constraints nullable="false" />
             </column>
+
+            <column name="expires_at" type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

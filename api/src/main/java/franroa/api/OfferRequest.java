@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import franroa.api.enums.Currency;
 import franroa.api.validation.annotations.Enum;
+import franroa.api.validation.annotations.Timestamp;
+import org.hibernate.annotations.CreationTimestamp;
 
 
 import javax.validation.constraints.NotNull;
@@ -24,4 +26,9 @@ public class OfferRequest {
     @Enum(enumClass = Currency.class)
     @JsonProperty("currency")
     public String currency;
+
+    @NotNull
+    @Timestamp
+    @JsonProperty("expires_at")
+    public String expires_at;
 }

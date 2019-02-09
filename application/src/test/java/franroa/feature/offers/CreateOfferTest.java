@@ -16,6 +16,8 @@ import org.junit.runner.RunWith;
 
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
@@ -24,10 +26,12 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 public class CreateOfferTest extends FeatureTestEnvironment {
     @Test
     public void stores_one_offer() throws IOException {
+        Timestamp expiresAt = Timestamp.from(Instant.ofEpochMilli(System.currentTimeMillis() + 5 * 60 * 1000));
         TestRequest request = new TestRequest();
         request.set("name", "Offer Name");
         request.set("price", "4");
         request.set("currency", Currency.EUR.toString());
+        request.set("expires_at", expiresAt.toString());
 
         TestResponse response = post("/v1/offers", request);
 
@@ -41,10 +45,11 @@ public class CreateOfferTest extends FeatureTestEnvironment {
         assertThat(offers.get(0).getString("name")).isEqualTo("Offer Name");
         assertThat(offers.get(0).getLong("price")).isEqualTo(4);
         assertThat(offers.get(0).getString("currency")).isEqualTo(Currency.EUR.toString());
+        assertThat(offers.get(0).getTimestamp("expires_at")).isEqualTo(expiresAt);
     }
 
     @Test
-    @DataProvider({ "name", "price", "currency" })
+    @DataProvider({ "name", "price", "currency", "expires_at" })
     public void some_fields_are_required(String requiredField) {
         TestRequest request = RequestFactory.offer();
         request.remove(requiredField);
@@ -56,6 +61,17 @@ public class CreateOfferTest extends FeatureTestEnvironment {
     }
 
     @Test
+    public void expires_at_is_has_to_be_a_valid_TIMESTAMP() {
+        TestRequest request = RequestFactory.offer();
+        request.set("expires_at", "INVALID");
+
+        TestResponse response = post("/v1/offers", request);
+
+        response.assertUnprocessableEntityError("expires_at Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]");
+        Assertions.assertThat(Offer.count()).isEqualTo(0);
+    }
+
+    @Test
     public void currency_has_to_be_one_of_the_enum() {
         TestRequest request = RequestFactory.offer();
         request.set("currency", "INVALID_VALUE");
@@ -63,7 +79,7 @@ public class CreateOfferTest extends FeatureTestEnvironment {
         TestResponse response = post("/v1/offers", request);
 
         Assertions.assertThat(Offer.count()).isEqualTo(0);
-        response.assertUnprocessableEntityError("currency Invalid value. This is not permitted.");
+        response.assertUnprocessableEntityError("currency Invalid value. This is not permitted");
     }
 
     @Test
