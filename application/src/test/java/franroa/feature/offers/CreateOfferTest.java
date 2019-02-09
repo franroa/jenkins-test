@@ -53,4 +53,15 @@ public class CreateOfferTest extends FeatureTestEnvironment {
         response.assertUnprocessableEntityError(requiredField + " may not be null");
         Assertions.assertThat(Offer.count()).isEqualTo(0);
     }
+
+    @Test
+    public void currency_has_to_be_one_of_the_enum() {
+        TestRequest request = RequestFactory.offer();
+        request.set("currency", "INVALID_VALUE");
+
+        TestResponse response = post("/v1/offers", request);
+
+        Assertions.assertThat(Offer.count()).isEqualTo(0);
+        response.assertEnumValueError("currency Invalid value. This is not permitted.");
+    }
 }

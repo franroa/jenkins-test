@@ -2,6 +2,8 @@ package franroa.api;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import franroa.api.enums.Currency;
+import franroa.api.validation.annotations.Enum;
 
 
 import javax.validation.constraints.NotNull;
@@ -17,6 +19,7 @@ public class OfferRequest {
     public Long price;
 
     @NotNull
+    @Enum(enumClass = Currency.class)
     @JsonProperty("currency")
     public String currency;
 }
