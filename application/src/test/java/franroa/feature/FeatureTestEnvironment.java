@@ -5,6 +5,8 @@ import franroa.container.Container;
 import franroa.exceptions.mappers.ResourceNotFoundExceptionMapper;
 import franroa.helper.TestRequest;
 import franroa.helper.TestResponse;
+import franroa.queue.Queue;
+import franroa.queue.QueueFactory;
 import franroa.resources.OfferResource;
 import io.dropwizard.configuration.ConfigurationException;
 import io.dropwizard.configuration.YamlConfigurationFactory;
@@ -26,7 +28,6 @@ import org.junit.ClassRule;
 import javax.validation.Validation;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
-import javax.ws.rs.core.MediaType;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -44,9 +45,10 @@ public class FeatureTestEnvironment {
     @Before
     public void setUp() throws Exception {
         loadConfiguration();
-        Container.instance(OfferConfiguration.class, config);
         openDatabaseConnection();
         migrate();
+        Container.instance(OfferConfiguration.class, config);
+        Container.instance(Queue.class, new QueueFactory(config.getQueueConfiguration()).create());
         Base.openTransaction();
     }
 

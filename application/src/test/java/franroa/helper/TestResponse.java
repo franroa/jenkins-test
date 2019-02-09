@@ -24,6 +24,17 @@ public class TestResponse<T> {
         return (T) this;
     }
 
+    public T  assertDataInArrayNode(String value) {
+        for (int i = 0; i < jsonResponse.size(); i++) {
+            if (jsonResponse.get(i) != null && jsonResponse.get(i).asText().equals(value)) {
+                return (T) this;
+            }
+        }
+
+        Assert.fail("value : " + value + " was not found in the array");
+        return (T) this;
+    }
+
     public T  assertDataInArrayNode(String key, String value) {
         if (! jsonResponse.get(key).isArray()) {
             Assert.fail("value : " + value + " was not found in the array");
@@ -65,6 +76,12 @@ public class TestResponse<T> {
     public T assertData(String key, String value) {
         this.assertKeyExists(key);
         Assertions.assertThat(this.jsonResponse.get(key).asText()).isEqualTo(value);
+
+        return (T) this;
+    }
+
+    public T assertData(String keyParent, Integer index, String key, String value) {
+        Assertions.assertThat(this.jsonResponse.get(keyParent).get(index).get(key).asText()).isEqualTo(value);
 
         return (T) this;
     }

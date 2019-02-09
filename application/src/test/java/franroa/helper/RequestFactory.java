@@ -7,6 +7,6 @@ public class RequestFactory {
         return new TestRequest()
                 .set("name", "New Offer")
                 .set("price", "4")
-                .set("currency", Currency.EURO.toString());
+                .set("currency", Currency.EUR.toString());
     }
 }
