@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.function.BiFunction;
 
 public class FakeQueue implements Queue {
     private Map<Job, Date> queuedJobs = new HashMap();
@@ -37,7 +36,7 @@ public class FakeQueue implements Queue {
         this.push(job);
     }
 
-    public <T extends Job> void assertPushed(Class<T> jobClass, BiFunction<T, Date, Boolean> compareFunction) {
+    public <T extends Job> void assertPushed(Class<T> jobClass, Date delay) {
         Iterator var3 = this.queuedJobs.entrySet().iterator();
 
         Entry queuedJob;
@@ -49,7 +48,8 @@ public class FakeQueue implements Queue {
             }
 
             queuedJob = (Entry)var3.next();
-        //} while(!((Job)queuedJob.getKey()).getClass().equals(jobClass) || !(compareFunction.apply((Job)queuedJob.getKey(), queuedJob.getValue())).booleanValue());
-        } while(!((Job)queuedJob.getKey()).getClass().equals(jobClass));
+        } while(!((Job)queuedJob.getKey()).getClass().equals(jobClass)
+                || !delay.equals(queuedJob.getValue())
+        );
     }
 }

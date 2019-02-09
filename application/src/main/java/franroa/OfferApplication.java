@@ -9,6 +9,7 @@ import franroa.exceptions.mappers.ResourceNotFoundExceptionMapper;
 import franroa.listeners.DatabaseApplicationListener;
 import franroa.queue.Queue;
 import franroa.queue.QueueFactory;
+import franroa.queue.QueueManager;
 import franroa.resources.OfferResource;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
@@ -54,6 +55,7 @@ public class OfferApplication extends Application<OfferConfiguration> {
     }
 
     private void registerInversionOfControl() {
+        environment.lifecycle().manage(new QueueManager());
         Container.singleton(Queue.class, new QueueFactory(configuration.getQueueConfiguration()));
     }
 

@@ -9,6 +9,7 @@ import franroa.feature.FeatureTestEnvironment;
 import franroa.helper.RequestFactory;
 import franroa.helper.TestRequest;
 import franroa.helper.TestResponse;
+import franroa.jobs.DeleteOfferJob;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.api.Assertions;
 import org.eclipse.jetty.http.HttpStatus;
@@ -27,6 +28,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 public class CreateOfferTest extends FeatureTestEnvironment {
     @Test
     public void stores_one_offer_and_schedules_the_expiration() throws IOException {
+        Queue.fake();
         Timestamp expiresAt = Timestamp.from(Instant.ofEpochMilli(System.currentTimeMillis() + 5 * 60 * 1000));
         TestRequest request = new TestRequest();
         request.set("name", "Offer Name");
@@ -47,6 +49,7 @@ public class CreateOfferTest extends FeatureTestEnvironment {
         assertThat(offers.get(0).getLong("price")).isEqualTo(4);
         assertThat(offers.get(0).getString("currency")).isEqualTo(Currency.EUR.toString());
         assertThat(offers.get(0).getTimestamp("expires_at")).isEqualTo(expiresAt);
+        Queue.assertPushed(DeleteOfferJob.class, expiresAt);
     }
 
     @Test
@@ -70,6 +73,11 @@ public class CreateOfferTest extends FeatureTestEnvironment {
 
         response.assertUnprocessableEntityError("expires_at Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]");
         Assertions.assertThat(Offer.count()).isEqualTo(0);
+    }
+
+    @Test
+    public void expires_at_has_to_be_set_in_the_future() {
+
     }
 
     @Test

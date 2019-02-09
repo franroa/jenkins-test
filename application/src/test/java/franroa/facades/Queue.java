@@ -7,7 +7,6 @@ import franroa.queue.Job;
 
 
 import java.util.Date;
-import java.util.function.BiFunction;
 
 public class Queue {
     private static FakeQueue queue;
@@ -20,7 +19,7 @@ public class Queue {
         Container.instance(franroa.queue.Queue.class, queue);
     }
 
-    public <T extends Job> void assertPushed(Class<T> jobClass, BiFunction<T, Date, Boolean> compareFunction) {
-        queue.assertPushed(jobClass, compareFunction);
+    public static <T extends Job> void assertPushed(Class<T> jobClass, Date delay) {
+        queue.assertPushed(jobClass, delay);
     }
 }

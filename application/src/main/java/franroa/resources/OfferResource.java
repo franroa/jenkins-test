@@ -5,7 +5,7 @@ import franroa.api.OfferRequest;
 import franroa.api.OfferResponse;
 import franroa.core.Model;
 import franroa.core.Offer;
-import franroa.jobs.TestJob;
+import franroa.jobs.DeleteOfferJob;
 import franroa.transformers.OfferTransformer;
 
 
@@ -20,7 +20,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URI;
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Path("/v1/offers")
@@ -33,7 +33,7 @@ public class OfferResource {
 
         OfferResponse response = OfferTransformer.transform(offer);
 
-        new TestJob().dispatch();
+        new DeleteOfferJob().dispatch(Timestamp.valueOf(request.expires_at));
 
         return Response.created(URI.create("/v1/offers/" + offer.getLongId())).entity(response).build();
     }
