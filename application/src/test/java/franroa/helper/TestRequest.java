@@ -41,4 +41,12 @@ public class TestRequest {
     public Object getJson() {
         return data;
     }
+
+    public TestRequest remove(String requiredField) {
+        currentNode.remove(requiredField);
+
+        resetCurrentNodeToOriginNode();
+
+        return this;
+    }
 }
