@@ -10,6 +10,7 @@ import franroa.transformers.OfferTransformer;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -49,5 +50,15 @@ public class OfferResource {
         OfferResponse response = OfferTransformer.transform(offer);
 
         return Response.ok().entity(response).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    public Response remove(@PathParam("id") Long id) {
+        Offer offer = Model.findOrFail(Offer.class, id);
+
+        offer.delete();
+
+        return Response.ok().build();
     }
 }
