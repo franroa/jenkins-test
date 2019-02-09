@@ -1,7 +1,7 @@
 package franroa.exceptions.mappers;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
-import franroa.dto.error.MalformedPayloadResponse;
+import franroa.api.error.MalformedPayloadResponse;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;

@@ -11,3 +11,6 @@ database:
   password: password
   user: postgres
   url: jdbc:postgresql://localhost:54322/interviewDB-test
+
+queue:
+  type: "SYNC"

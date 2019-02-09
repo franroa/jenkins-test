@@ -7,6 +7,8 @@ import franroa.exceptions.mappers.InternalServerErrorExceptionMapper;
 import franroa.exceptions.mappers.JsonParseExceptionMapper;
 import franroa.exceptions.mappers.ResourceNotFoundExceptionMapper;
 import franroa.listeners.DatabaseApplicationListener;
+import franroa.queue.Queue;
+import franroa.queue.QueueFactory;
 import franroa.resources.OfferResource;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
@@ -47,7 +49,12 @@ public class OfferApplication extends Application<OfferConfiguration> {
         registerEventListeners();
         registerResources();
         registerExceptionMappers();
+        registerInversionOfControl();
         bindClasses(configuration);
+    }
+
+    private void registerInversionOfControl() {
+        Container.singleton(Queue.class, new QueueFactory(configuration.getQueueConfiguration()));
     }
 
     private void bindClasses(OfferConfiguration configuration) {

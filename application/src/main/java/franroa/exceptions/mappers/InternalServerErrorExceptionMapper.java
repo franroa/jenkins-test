@@ -1,6 +1,6 @@
 package franroa.exceptions.mappers;
 
-import franroa.dto.error.InternalServerErrorResponse;
+import franroa.api.error.InternalServerErrorResponse;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.InternalServerErrorException;

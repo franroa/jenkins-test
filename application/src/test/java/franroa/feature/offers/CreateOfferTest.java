@@ -32,6 +32,7 @@ public class CreateOfferTest extends FeatureTestEnvironment {
         TestResponse response = post("/v1/offers", request);
 
         response.assertStatus(HttpStatus.OK_200);
+        //TODO assert location
         response.assertData("name", "Offer Name");
         response.assertData("price", "4");
         response.assertData("currency", Currency.EUR.toString());
