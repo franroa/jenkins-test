@@ -113,6 +113,7 @@ public class CreateOfferTest extends TestCase {
 
     @Test
     public void name_can_have_a_length_of_255() {
+        Queue.fake();
         TestRequest request = RequestFactory.offer();
         request.set("name", StringUtils.rightPad("a", 255, "a").toString());
 
