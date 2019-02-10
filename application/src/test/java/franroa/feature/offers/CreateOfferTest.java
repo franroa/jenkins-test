@@ -4,11 +4,11 @@ import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import franroa.api.enums.Currency;
 import franroa.core.Offer;
-import franroa.testing.facades.Queue;
-import franroa.feature.FeatureTestEnvironment;
 import franroa.helper.RequestFactory;
+import franroa.helper.TestCase;
 import franroa.helper.TestResponse;
 import franroa.jobs.DeleteOfferJob;
+import franroa.testing.facades.Queue;
 import franroa.testing.helper.TestRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.api.Assertions;
@@ -25,7 +25,7 @@ import java.util.List;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 @RunWith(DataProviderRunner.class)
-public class CreateOfferTest extends FeatureTestEnvironment {
+public class CreateOfferTest extends TestCase {
     @Test
     public void stores_one_offer_and_schedules_the_expiration() throws IOException {
         Queue.fake();
@@ -49,7 +49,10 @@ public class CreateOfferTest extends FeatureTestEnvironment {
         assertThat(offers.get(0).getLong("price")).isEqualTo(4);
         assertThat(offers.get(0).getString("currency")).isEqualTo(Currency.EUR.toString());
         assertThat(offers.get(0).getTimestamp("expires_at")).isEqualTo(expiresAt);
-        Queue.assertPushed(DeleteOfferJob.class, expiresAt);
+        Queue.assertPushed(DeleteOfferJob.class, (job, delay) -> {
+            assertThat(expiresAt).isEqualToIgnoringSeconds(delay);
+            return job.getData().get("offerId").equals(offers.get(0).getLongId());
+        });
     }
 
     @Test
@@ -77,7 +80,13 @@ public class CreateOfferTest extends FeatureTestEnvironment {
 
     @Test
     public void expires_at_has_to_be_set_in_the_future() {
+        Timestamp expiresAtOlderDate = Timestamp.from(Instant.ofEpochMilli(System.currentTimeMillis() - 5 * 60 * 1000));
+        TestRequest request = RequestFactory.offer();
+        request.set("expires_at", expiresAtOlderDate.toString());
 
+        TestResponse response = post("/v1/offers", request);
+
+        response.assertUnprocessableEntityError("expires_at  Date has to be placed in the present or in the future");
     }
 
     @Test

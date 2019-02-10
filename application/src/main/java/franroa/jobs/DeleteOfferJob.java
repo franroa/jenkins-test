@@ -1,17 +1,15 @@
 package franroa.jobs;
 
+import franroa.core.Offer;
 import franroa.queue.Job;
-
-
-import java.sql.Timestamp;
 
 public class DeleteOfferJob extends Job {
     @Override
-    protected void handle() {
-
+    public void handle() {
+        Offer.findById(getData().get("offerId")).delete();
     }
 
-    public DeleteOfferJob setExpirationTime(Timestamp expirationTime) {
-        return (DeleteOfferJob) set("expirationTime", expirationTime);
+    public DeleteOfferJob setOfferId(Long offerId) {
+        return (DeleteOfferJob) set("offerId", offerId);
     }
 }

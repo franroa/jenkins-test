@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import franroa.api.enums.Currency;
 import franroa.api.validation.annotations.Enum;
+import franroa.api.validation.annotations.PresentOrFutureDate;
 import franroa.api.validation.annotations.Timestamp;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -29,6 +30,7 @@ public class OfferRequest {
 
     @NotNull
     @Timestamp
+    @PresentOrFutureDate(plusSeconds = 5)
     @JsonProperty("expires_at")
     public String expires_at;
 }

@@ -90,5 +90,5 @@ public abstract class Job implements org.quartz.Job {
         }
     }
 
-    protected abstract void handle();
+    public abstract void handle();
 }

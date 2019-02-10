@@ -1,12 +1,12 @@
 package franroa.feature.offers;
 
 import franroa.core.Offer;
-import franroa.feature.FeatureTestEnvironment;
+import franroa.helper.TestCase;
 import franroa.helper.ModelFactory;
 import franroa.helper.TestResponse;
 import org.junit.Test;
 
-public class FetchOneOfferTest extends FeatureTestEnvironment {
+public class FetchOneOfferTest extends TestCase {
     @Test
     public void all_offers_are_fetched() {
         Offer offer = ModelFactory.offer();

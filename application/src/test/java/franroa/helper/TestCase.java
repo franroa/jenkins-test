@@ -1,4 +1,4 @@
-package franroa.feature;
+package franroa.helper;
 
 import franroa.OfferConfiguration;
 import franroa.container.Container;
@@ -32,7 +32,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class FeatureTestEnvironment {
+public class TestCase {
     protected static OfferConfiguration config;
     private static boolean migrated = false;
 

@@ -1,7 +1,7 @@
 package franroa.feature.offers;
 
 import franroa.core.Offer;
-import franroa.feature.FeatureTestEnvironment;
+import franroa.helper.TestCase;
 import franroa.helper.ModelFactory;
 import franroa.helper.TestResponse;
 import org.assertj.core.api.Assertions;
@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-public class FetchAllOffersTest extends FeatureTestEnvironment {
+public class FetchAllOffersTest extends TestCase {
     @Test
     public void all_offers_are_fetched() {
         List<Offer> offers = ModelFactory.offer(2);

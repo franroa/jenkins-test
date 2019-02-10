@@ -33,7 +33,9 @@ public class OfferResource {
 
         OfferResponse response = OfferTransformer.transform(offer);
 
-        new DeleteOfferJob().dispatch(Timestamp.valueOf(request.expires_at));
+        new DeleteOfferJob()
+                .setOfferId(offer.getLongId())
+                .dispatch(Timestamp.valueOf(request.expires_at));
 
         return Response.created(URI.create("/v1/offers/" + offer.getLongId())).entity(response).build();
     }

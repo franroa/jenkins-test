@@ -1,14 +1,14 @@
 package franroa.feature.offers;
 
 import franroa.core.Offer;
-import franroa.feature.FeatureTestEnvironment;
+import franroa.helper.TestCase;
 import franroa.helper.ModelFactory;
 import franroa.helper.TestResponse;
 import org.assertj.core.api.Assertions;
 import org.eclipse.jetty.http.HttpStatus;
 import org.junit.Test;
 
-public class DeleteOfferTest extends FeatureTestEnvironment {
+public class DeleteOfferTest extends TestCase {
     @Test
     public void deleting_one_offer() {
         Offer offer = ModelFactory.offer();
