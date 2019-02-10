@@ -13,17 +13,22 @@
 
     <version>0.0.1</version>
 
+    <properties>
+        <interview-api.version>0.0.1</interview-api.version>
+        <interview-lib.version>0.0.1</interview-lib.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>net.franroa.interview</groupId>
             <artifactId>interview-api</artifactId>
-            <version>0.0.1</version>
+            <version>${interview-api.version}</version>
         </dependency>
 
         <dependency>
             <groupId>net.franroa.interview</groupId>
             <artifactId>lib</artifactId>
-            <version>0.0.1</version>
+            <version>${interview-api.version}</version>
         </dependency>
     </dependencies>
 </project>
