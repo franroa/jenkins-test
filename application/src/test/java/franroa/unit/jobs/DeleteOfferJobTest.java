@@ -1,7 +1,7 @@
 package franroa.unit.jobs;
 
 import franroa.core.Offer;
-import franroa.helper.TestCase;
+import franroa.feature.TestCase;
 import franroa.helper.ModelFactory;
 import franroa.jobs.DeleteOfferJob;
 import org.junit.Test;

@@ -17,7 +17,11 @@ public class HttpClient implements InterviewClient {
 
     @Override
     public boolean ping() {
-        return false;
+        try {
+            return client.get("ping").getStatus() == 200;
+        } catch (RuntimeException exception) {
+            return false;
+        }
     }
 
     @Override

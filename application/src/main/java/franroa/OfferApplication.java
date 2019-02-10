@@ -8,6 +8,7 @@ import franroa.queue.Queue;
 import franroa.queue.QueueFactory;
 import franroa.queue.QueueManager;
 import franroa.resources.OfferResource;
+import franroa.resources.PingResource;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.db.ManagedDataSource;
@@ -66,6 +67,7 @@ public class OfferApplication extends Application<OfferConfiguration> {
 
     private void registerResources() {
         environment.jersey().register(new OfferResource());
+        environment.jersey().register(new PingResource());
     }
 
     private void registerEventListeners() {

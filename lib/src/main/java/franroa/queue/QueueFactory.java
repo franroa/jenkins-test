@@ -22,6 +22,10 @@ public class QueueFactory implements Factory<Queue> {
             return new SyncQueue();
         }
 
+        if (configuration.type.equals(SupportedQueues.NULL)) {
+            return new NullQueue();
+        }
+
         throw new RuntimeException(String.format("The configured queue type '%s' is not supported!", configuration.type.toString()));
     }
 }

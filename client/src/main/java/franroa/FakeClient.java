@@ -8,10 +8,11 @@ import franroa.exception.InterviewClientException;
 
 
 public class FakeClient implements InterviewClient {
+    public boolean fakeConnectionError = false;
 
     @Override
     public boolean ping() {
-        return false;
+        return !fakeConnectionError;
     }
 
     @Override

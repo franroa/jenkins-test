@@ -1,8 +1,9 @@
-package franroa.helper;
+package franroa.feature;
 
 import franroa.OfferConfiguration;
 import franroa.container.Container;
 import franroa.exceptions.mappers.ResourceNotFoundExceptionMapper;
+import franroa.resources.PingResource;
 import franroa.testing.helper.TestRequest;
 import franroa.helper.TestResponse;
 import franroa.queue.Queue;
@@ -39,6 +40,7 @@ public class TestCase {
     @ClassRule
     public static final ResourceTestRule resources = ResourceTestRule.builder()
             .addResource(new OfferResource())
+            .addResource(new PingResource())
             .addResource(new ResourceNotFoundExceptionMapper())
             .build();
 

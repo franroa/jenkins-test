@@ -1,7 +1,7 @@
 package franroa.feature.offers;
 
 import franroa.core.Offer;
-import franroa.helper.TestCase;
+import franroa.feature.TestCase;
 import franroa.helper.ModelFactory;
 import franroa.helper.TestResponse;
 import org.assertj.core.api.Assertions;
