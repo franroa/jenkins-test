@@ -15,6 +15,7 @@ public class OfferTransformer {
         response.name = offer.getString("name");
         response.price = offer.getLong("price");
         response.currency = offer.getString("currency");
+        response.expires_at = offer.getString("expires_at");
 
         return response;
     }
@@ -23,14 +24,7 @@ public class OfferTransformer {
         OfferListResponse responseList = new OfferListResponse();
 
         offers.forEach(offer -> {
-            OfferResponse response = new OfferResponse();
-
-            response.id = offer.getLongId();
-            response.name = offer.getString("name");
-            response.price = offer.getLong("price");
-            response.currency = offer.getString("currency");
-
-            responseList.offers.add(response);
+            responseList.offers.add(OfferTransformer.transform(offer));
         });
 
         return responseList;

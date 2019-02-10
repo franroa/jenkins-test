@@ -23,8 +23,10 @@ public class FetchAllOffersTest extends TestCase {
         response.assertData("offers", 0, "name", offers.get(0).getString("name"));
         response.assertData("offers", 0, "price", offers.get(0).getString("price"));
         response.assertData("offers", 0, "currency", offers.get(0).getString("currency"));
+        response.assertData("offers", 0, "expires_at", offers.get(0).getString("expires_at"));
         response.assertData("offers", 1, "name", offers.get(1).getString("name"));
         response.assertData("offers", 1, "price", offers.get(1).getString("price"));
         response.assertData("offers", 1, "currency", offers.get(1).getString("currency"));
+        response.assertData("offers", 1, "expires_at", offers.get(1).getString("expires_at"));
     }
 }

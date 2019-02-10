@@ -5,4 +5,5 @@ public class OfferResponse {
     public String name;
     public Long price;
     public String currency;
+    public String expires_at;
 }

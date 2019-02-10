@@ -16,6 +16,7 @@ public class FetchOneOfferTest extends TestCase {
         response.assertData("name", offer.getString("name"));
         response.assertData("price", offer.getString("price"));
         response.assertData("currency", offer.getString("currency"));
+        response.assertData("expires_at", offer.getString("expires_at"));
     }
 
     @Test
