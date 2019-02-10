@@ -1,10 +1,7 @@
 package franroa;
 
-import com.fasterxml.jackson.jaxrs.base.JsonMappingExceptionMapper;
 import franroa.config.Connection;
 import franroa.container.Container;
-import franroa.exceptions.mappers.InternalServerErrorExceptionMapper;
-import franroa.exceptions.mappers.JsonParseExceptionMapper;
 import franroa.exceptions.mappers.ResourceNotFoundExceptionMapper;
 import franroa.listeners.DatabaseApplicationListener;
 import franroa.queue.Queue;
@@ -65,9 +62,6 @@ public class OfferApplication extends Application<OfferConfiguration> {
 
     private void registerExceptionMappers() {
         environment.jersey().register(new ResourceNotFoundExceptionMapper());
-        environment.jersey().register(new InternalServerErrorExceptionMapper());
-        environment.jersey().register(new JsonMappingExceptionMapper());
-        environment.jersey().register(new JsonParseExceptionMapper());
     }
 
     private void registerResources() {
