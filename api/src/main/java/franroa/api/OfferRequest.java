@@ -6,7 +6,6 @@ import franroa.api.enums.Currency;
 import franroa.api.validation.annotations.Enum;
 import franroa.api.validation.annotations.PresentOrFutureDate;
 import franroa.api.validation.annotations.Timestamp;
-import org.hibernate.annotations.CreationTimestamp;
 
 
 import javax.validation.constraints.NotNull;
