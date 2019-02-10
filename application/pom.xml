@@ -18,6 +18,8 @@
         <dropwizard.version>1.1.0</dropwizard.version>
         <postgresql.version>42.1.1</postgresql.version>
         <junit.version>4.12</junit.version>
+        <interview-api.version>0.0.1</interview-api.version>
+        <interview-lib.version>0.0.1</interview-lib.version>
         <mainClass>franroa.OfferApplication</mainClass>
     </properties>
 
@@ -25,7 +27,13 @@
         <dependency>
             <groupId>net.franroa.interview</groupId>
             <artifactId>interview-api</artifactId>
-            <version>0.0.1</version>
+            <version>${interview-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.franroa.interview</groupId>
+            <artifactId>lib</artifactId>
+            <version>${interview-lib.version}</version>
         </dependency>
 
         <dependency>
@@ -33,10 +41,29 @@
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
         </dependency>
+
         <dependency>
-            <groupId>net.franroa.interview</groupId>
-            <artifactId>lib</artifactId>
-            <version>0.0.1</version>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>3.5.1</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.javalite</groupId>
+                <artifactId>activejdbc-instrumentation</artifactId>
+                <version>1.4.13</version>
+                <executions>
+                    <execution>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>instrument</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

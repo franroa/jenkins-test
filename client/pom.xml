@@ -19,5 +19,11 @@
             <artifactId>interview-api</artifactId>
             <version>0.0.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>net.franroa.interview</groupId>
+            <artifactId>lib</artifactId>
+            <version>0.0.1</version>
+        </dependency>
     </dependencies>
 </project>
