@@ -28,11 +28,11 @@ public class FakeClientTest extends InterviewClientTest {
     public void it_provides_the_feature_to_fake_offers() throws InterviewClientException {
         Timestamp expiresAt = Timestamp.from(Instant.ofEpochMilli(System.currentTimeMillis() + 5 * 60 * 1000));
         FakeClient client = (FakeClient) createClient("");
-        client.fakeOffer(132L, "My Incredible Offer", 123L, Currency.EUR, expiresAt);
+        OfferResponse offer = client.fakeOffer("My Incredible Offer", 123L, Currency.EUR, expiresAt);
 
-        OfferResponse response = client.getOffer(132L);
+        OfferResponse response = client.getOffer(offer.id);
 
-        assertThat(response.id).isEqualTo(132L);
+        assertThat(response.id).isEqualTo(offer.id);
         assertThat(response.name).isEqualTo("My Incredible Offer");
         assertThat(response.price).isEqualTo(123L);
         assertThat(response.currency).isEqualTo(Currency.EUR.toString());
@@ -41,11 +41,13 @@ public class FakeClientTest extends InterviewClientTest {
 
     @Test
     public void it_provides_a_method_to_check_if_fetching_a_merchant_was_called_properly() throws InterviewClientException {
+        Timestamp expiresAt = Timestamp.from(Instant.ofEpochMilli(System.currentTimeMillis() + 5 * 60 * 1000));
         FakeClient client = (FakeClient) createClient("");
+        OfferResponse offer = client.fakeOffer("My Incredible Offer", 123L, Currency.EUR, expiresAt);
 
-        OfferResponse response = client.getOffer(132L);
+        OfferResponse response = client.getOffer(1L);
 
         assertThat(client.getCaughtFetchOfferCalls()).hasSize(1);
-        assertThat(client.getCaughtFetchOfferCalls()).contains(132L);
+        assertThat(client.getCaughtFetchOfferCalls()).contains(1L);
     }
 }

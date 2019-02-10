@@ -35,7 +35,11 @@ public class HttpClient implements InterviewClient {
 
     @Override
     public OfferListResponse getAllOffers() throws InterviewClientException {
-        return null;
+        try {
+            return client.get("v1/offers/").asDto(OfferListResponse.class);
+        } catch (Exception e) {
+            throw new InterviewClientException();
+        }
     }
 
     @Override
