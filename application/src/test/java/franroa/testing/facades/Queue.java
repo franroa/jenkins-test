@@ -1,8 +1,8 @@
-package franroa.facades;
+package franroa.testing.facades;
 
 
 import franroa.container.Container;
-import franroa.fakes.FakeQueue;
+import franroa.testing.fakes.FakeQueue;
 import franroa.queue.Job;
 
 

@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 
 public class TestResponse<T> {
     private final JsonNode jsonResponse;
-    Response response;
+    private Response response;
 
     public TestResponse(Response response) {
         this.jsonResponse = response.readEntity(JsonNode.class);
@@ -65,14 +65,6 @@ public class TestResponse<T> {
         return (T) this;
     }
 
-    public T assertResourceNotFound() {
-        assertStatus(ResourceNotFoundResponse.HTTP_CODE);
-        assertData("error_code", ResourceNotFoundResponse.ERROR_CODE);
-        assertData("error_message", ResourceNotFoundResponse.ERROR_MESSAGE);
-
-        return (T) this;
-    }
-
     public T assertData(String key, String value) {
         this.assertKeyExists(key);
         Assertions.assertThat(this.jsonResponse.get(key).asText()).isEqualTo(value);
@@ -100,5 +92,13 @@ public class TestResponse<T> {
 
     public void assertHeader(String key, String value) {
         Assertions.assertThat(this.response.getHeaderString(key)).isEqualTo(value);
+    }
+
+    public T assertResourceNotFound() {
+        assertStatus(ResourceNotFoundResponse.HTTP_CODE);
+        assertData("error_code", ResourceNotFoundResponse.ERROR_CODE);
+        assertData("error_message", ResourceNotFoundResponse.ERROR_MESSAGE);
+
+        return (T) this;
     }
 }

@@ -3,7 +3,7 @@ package franroa.feature;
 import franroa.OfferConfiguration;
 import franroa.container.Container;
 import franroa.exceptions.mappers.ResourceNotFoundExceptionMapper;
-import franroa.helper.TestRequest;
+import franroa.testing.helper.TestRequest;
 import franroa.helper.TestResponse;
 import franroa.queue.Queue;
 import franroa.queue.QueueFactory;
@@ -92,11 +92,11 @@ public class FeatureTestEnvironment {
         return new TestResponse(requestTo(target).post(Entity.json(request.getJson())));
     }
 
-    protected TestResponse get(String target) {
+    protected <T> TestResponse get(String target) {
         return new TestResponse(requestTo(target).get());
     }
 
-    protected TestResponse delete(String target) {
+    protected <T> TestResponse delete(String target) {
         return new TestResponse(requestTo(target).delete());
     }
 

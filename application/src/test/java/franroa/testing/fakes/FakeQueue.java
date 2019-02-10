@@ -1,4 +1,4 @@
-package franroa.fakes;
+package franroa.testing.fakes;
 
 import franroa.queue.Job;
 import franroa.queue.Queue;

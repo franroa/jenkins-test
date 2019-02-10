@@ -1,4 +1,4 @@
-package franroa.helper;
+package franroa.testing.helper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
