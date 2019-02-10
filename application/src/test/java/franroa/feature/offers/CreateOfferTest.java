@@ -45,6 +45,7 @@ public class CreateOfferTest extends TestCase {
         response.assertData("name", "Offer Name");
         response.assertData("price", "4");
         response.assertData("currency", Currency.EUR.toString());
+        response.assertData("expires_at", expiresAt.toString());
         assertThat(offers.get(0).getString("name")).isEqualTo("Offer Name");
         assertThat(offers.get(0).getLong("price")).isEqualTo(4);
         assertThat(offers.get(0).getString("currency")).isEqualTo(Currency.EUR.toString());
