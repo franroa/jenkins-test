@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class DeleteOfferTest extends TestCase {
     @Test
-    public void deleting_one_offer() {
+    public void one_offer_can_be_cancelled() {
         Offer offer = ModelFactory.offer();
 
         TestResponse response = delete("/v1/offers/" + offer.getLongId());
@@ -20,7 +20,7 @@ public class DeleteOfferTest extends TestCase {
     }
 
     @Test
-    public void trying_to_delete_a_non_existing_offer() {
+    public void trying_to_cancel_a_non_existing_offer() {
         Long nonExistingOfferId = 12L;
 
         TestResponse response = delete("/v1/offers/" + nonExistingOfferId);
