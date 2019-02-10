@@ -2,7 +2,7 @@ package franroa.config;
 
 import javax.validation.constraints.NotNull;
 
-public class TamerClientConfiguration {
+public class InterviewClientConfiguration {
     @NotNull
     public SupportedClients client;
 
