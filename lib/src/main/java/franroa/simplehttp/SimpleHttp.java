@@ -57,6 +57,7 @@ public class SimpleHttp {
     public SimpleResponse get(String url) {
         this.method = "GET";
         this.url = url;
+        this.request = null;
 
         return getSimpleResponse();
     }
@@ -64,6 +65,7 @@ public class SimpleHttp {
     public SimpleResponse delete(String url) {
         this.method = "DELETE";
         this.url = url;
+        this.request = null;
 
         return getSimpleResponse();
     }

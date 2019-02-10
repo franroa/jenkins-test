@@ -5,9 +5,7 @@ import franroa.api.OfferRequest;
 import franroa.api.OfferResponse;
 import franroa.config.InterviewClientConfiguration;
 import franroa.exception.InterviewClientException;
-import franroa.simplehttp.ResponseStatusNotExpectedException;
 import franroa.simplehttp.SimpleHttp;
-import org.eclipse.jetty.http.HttpStatus;
 
 
 public class HttpClient implements InterviewClient {
@@ -42,7 +40,11 @@ public class HttpClient implements InterviewClient {
 
     @Override
     public OfferResponse getOffer(Long offerId) throws InterviewClientException {
-        return null;
+        try {
+            return client.get("v1/offers/" + offerId).asDto(OfferResponse.class);
+        } catch (Exception e) {
+            throw new InterviewClientException();
+        }
     }
 
     @Override

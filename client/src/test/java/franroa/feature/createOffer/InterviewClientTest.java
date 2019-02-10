@@ -20,7 +20,7 @@ public abstract class InterviewClientTest extends IntegrationTestCase {
     protected abstract InterviewClient createClient(String scenario);
 
     @Test
-    public void if_a_request_succeeds__the_stores_offer_is_returned() {
+    public void if_a_request_succeeds__the_stored_offer_is_returned() {
         OfferRequest request = RequestFactory.offer();
 
         try {
