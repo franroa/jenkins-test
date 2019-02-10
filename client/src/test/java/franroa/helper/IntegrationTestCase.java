@@ -39,7 +39,7 @@ public abstract class IntegrationTestCase {
         if (scenario.equals("connection-error")) {
             config.host = "http://localhost:8228";
         } else {
-            config.host = "http://localhost:8080";
+            config.host = "http://localhost:8585";
         }
 
         config.client = SupportedClients.HTTP;

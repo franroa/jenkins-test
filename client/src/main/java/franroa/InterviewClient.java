@@ -5,6 +5,7 @@ import franroa.api.OfferListResponse;
 import franroa.api.OfferRequest;
 import franroa.api.OfferResponse;
 import franroa.exception.InterviewClientException;
+import franroa.simplehttp.ResponseStatusNotExpectedException;
 
 public interface InterviewClient {
     boolean ping();

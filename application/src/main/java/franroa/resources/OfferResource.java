@@ -31,11 +31,11 @@ public class OfferResource {
     public Response store(@Valid OfferRequest request) {
         Offer offer = Offer.buildFromRequest(request);
 
-        OfferResponse response = OfferTransformer.transform(offer);
-
         new DeleteOfferJob()
                 .setOfferId(offer.getLongId())
                 .dispatch(Timestamp.valueOf(request.expires_at));
+
+        OfferResponse response = OfferTransformer.transform(offer);
 
         return Response.created(URI.create("/v1/offers/" + offer.getLongId())).entity(response).build();
     }
