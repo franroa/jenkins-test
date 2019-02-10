@@ -22,7 +22,11 @@ public abstract class InterviewClientTest extends IntegrationTestCase {
 
         OfferResponse response = client.getOffer(offer.id);
 
+        assertThat(response.id).isNotNull();
+        assertThat(response.name).isEqualTo(request.name);
         assertThat(response.price).isEqualTo(request.price);
+        assertThat(response.currency).isEqualTo(request.currency);
+        assertThat(response.expires_at).isEqualTo(request.expires_at);
     }
 
     @Test(expected = InterviewClientException.class)
