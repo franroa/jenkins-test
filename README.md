@@ -19,9 +19,8 @@
  should be run on an in-memory database
  - All the incoming and outgoing content can be logged
  
- TODOs
+## TODOs
 
-- deploy with jenkins
+- deploy with jenkins and docker to AWS
 - Metrics
 - Idempotency Keys
-- response types
