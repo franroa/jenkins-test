@@ -17,16 +17,11 @@
  when the application is deployed to AWS (That is the application user's password, not the root's one)
  - Another config will be set only for jenkins. That one will have the postgres real database, and the local application
  should be run on an in-memory database
+ - All the incoming and outgoing content can be logged
  
  TODOs
- 
-- healthcheck and monitoring ...
-- first deploy the and the the client
-- splunk emails
+
+- deploy with jenkins
 - Metrics
-- Logging
 - Idempotency Keys
-- Nexpose
-- coverage
 - response types
-- everything can be logged

@@ -41,4 +41,8 @@ public class OfferConfiguration extends Configuration {
             throw new RuntimeException(e);
         }
     }
+
+    public String getCorrelationIdHeaderKey() {
+        return "Interview-Correlation-Id";
+    }
 }

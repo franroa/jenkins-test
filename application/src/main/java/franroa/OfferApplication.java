@@ -3,6 +3,8 @@ package franroa;
 import franroa.config.Connection;
 import franroa.container.Container;
 import franroa.exceptions.mappers.ResourceNotFoundExceptionMapper;
+import franroa.filter.CorrelationIdRequestFilter;
+import franroa.filter.CorrelationIdResponseFilter;
 import franroa.listeners.DatabaseApplicationListener;
 import franroa.queue.Queue;
 import franroa.queue.QueueFactory;
@@ -55,7 +57,13 @@ public class OfferApplication extends Application<OfferConfiguration> {
         registerExceptionMappers();
         registerInversionOfControl();
         registerFeatures();
+        registerFilters();
         bindClasses(configuration);
+    }
+
+    private void registerFilters() {
+        environment.jersey().register(new CorrelationIdRequestFilter(configuration.getCorrelationIdHeaderKey()));
+        environment.jersey().register(new CorrelationIdResponseFilter(configuration.getCorrelationIdHeaderKey()));
     }
 
     private void registerFeatures() {
