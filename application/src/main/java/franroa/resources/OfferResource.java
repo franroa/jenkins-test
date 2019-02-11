@@ -7,6 +7,7 @@ import franroa.core.Model;
 import franroa.core.Offer;
 import franroa.jobs.DeleteOfferJob;
 import franroa.transformers.OfferTransformer;
+import org.slf4j.LoggerFactory;
 
 
 import javax.validation.Valid;
@@ -27,6 +28,8 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class OfferResource {
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OfferResource.class);
+
     @POST
     public Response store(@Valid OfferRequest request) {
         Offer offer = Offer.buildFromRequest(request);
@@ -42,6 +45,7 @@ public class OfferResource {
 
     @GET
     public Response index() {
+        LOGGER.info("Entra en el method index: test");
         List<Offer> offers = Offer.findAll();
 
         OfferListResponse response = OfferTransformer.transform(offers);

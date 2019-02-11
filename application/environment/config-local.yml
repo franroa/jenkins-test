@@ -27,3 +27,9 @@ queue:
     org.quartz.jobStore.tablePrefix: "ZZ_QRTZ_"
     org.quartz.jobStore.isClustered: true
     org.quartz.dataSource.queue.connectionProvider.class: franroa.queue.config.QueueConnectionProvider
+
+logging:
+  level: INFO
+  loggers:
+    net.klarna:
+      level: DEBUG

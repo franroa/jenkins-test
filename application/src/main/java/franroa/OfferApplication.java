@@ -18,6 +18,11 @@ import liquibase.Liquibase;
 import liquibase.database.jvm.JdbcConnection;
 import liquibase.exception.LiquibaseException;
 import liquibase.resource.ClassLoaderResourceAccessor;
+import org.glassfish.jersey.logging.LoggingFeature;
+
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class OfferApplication extends Application<OfferConfiguration> {
     private static final String MIGRATIONS_MASTER_FILE_PATH = "changelog/master.xml";
@@ -49,7 +54,14 @@ public class OfferApplication extends Application<OfferConfiguration> {
         registerResources();
         registerExceptionMappers();
         registerInversionOfControl();
+        registerFeatures();
         bindClasses(configuration);
+    }
+
+    private void registerFeatures() {
+        environment.jersey().register(
+                new LoggingFeature(Logger.getLogger("inbound"), Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 8192)
+        );
     }
 
     private void registerInversionOfControl() {

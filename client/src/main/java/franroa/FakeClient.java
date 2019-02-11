@@ -1,14 +1,17 @@
 package franroa;
 
 
+import com.google.common.collect.Lists;
 import franroa.api.OfferListResponse;
 import franroa.api.OfferRequest;
 import franroa.api.OfferResponse;
 import franroa.api.enums.Currency;
 import franroa.exception.InterviewClientException;
+import org.apache.commons.lang3.ArrayUtils;
 
 
 import javax.validation.Validation;
+import java.sql.Array;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +43,7 @@ public class FakeClient implements InterviewClient {
         response.currency = request.currency;
         response.name = request.name;
         response.price = request.price;
+        response.expires_at = request.expires_at;
 
         fakeOffers.offers.add(response);
 
@@ -61,12 +65,22 @@ public class FakeClient implements InterviewClient {
 
         guard();
 
+        if (fakeOffers.offers.size() == 0) {
+            throw new InterviewClientException();
+        }
+
         return fakeOffers.offers.get(Integer.valueOf(String.valueOf(offerId)));
     }
 
     @Override
     public void cancelOffer(Long offerId) throws InterviewClientException {
         caughtCancelOfferCalls.add(offerId);
+
+        try {
+            fakeOffers.offers.remove(fakeOffers.offers.get(Integer.valueOf(String.valueOf(offerId))));
+        } catch(Exception e) {
+            throw new InterviewClientException();
+        }
 
         guard();
     }
