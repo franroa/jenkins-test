@@ -12,5 +12,5 @@ public interface InterviewClient {
     OfferResponse createOffer(OfferRequest request, String correlationId) throws InterviewClientException;
     OfferListResponse getAllOffers() throws InterviewClientException;
     OfferResponse getOffer(Long offerId) throws InterviewClientException;
-    boolean cancelOffer(Long offerId) throws InterviewClientException;
+    void cancelOffer(Long offerId) throws InterviewClientException;
 }

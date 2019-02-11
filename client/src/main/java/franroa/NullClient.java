@@ -29,7 +29,5 @@ public class NullClient implements InterviewClient {
     }
 
     @Override
-    public boolean cancelOffer(Long offerId) throws InterviewClientException {
-        return false;
-    }
+    public void cancelOffer(Long offerId) throws InterviewClientException {}
 }

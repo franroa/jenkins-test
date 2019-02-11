@@ -61,6 +61,6 @@ public class FakeClientTest extends InterviewClientTest {
         client.getAllOffers();
         client.getAllOffers();
 
-        assertThat(client.getNoCaughtFetchAllOfferCalls()).isEqualTo(2);
+        assertThat(client.getNrCaughtFetchAllOfferCalls()).isEqualTo(2);
     }
 }

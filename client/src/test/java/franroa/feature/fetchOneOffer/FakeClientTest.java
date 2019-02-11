@@ -45,9 +45,9 @@ public class FakeClientTest extends InterviewClientTest {
         FakeClient client = (FakeClient) createClient("");
         OfferResponse offer = client.fakeOffer("My Incredible Offer", 123L, Currency.EUR, expiresAt);
 
-        OfferResponse response = client.getOffer(1L);
+        OfferResponse response = client.getOffer(offer.id);
 
         assertThat(client.getCaughtFetchOfferCalls()).hasSize(1);
-        assertThat(client.getCaughtFetchOfferCalls()).contains(1L);
+        assertThat(client.getCaughtFetchOfferCalls()).contains(offer.id);
     }
 }

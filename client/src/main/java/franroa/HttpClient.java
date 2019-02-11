@@ -52,7 +52,11 @@ public class HttpClient implements InterviewClient {
     }
 
     @Override
-    public boolean cancelOffer(Long offerId) throws InterviewClientException {
-        return false;
+    public void cancelOffer(Long offerId) throws InterviewClientException {
+        try {
+            client.delete("v1/offers/" + offerId);
+        } catch (Exception e) {
+            throw new InterviewClientException();
+        }
     }
 }

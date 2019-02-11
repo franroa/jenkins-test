@@ -21,6 +21,7 @@ public class FakeClient implements InterviewClient {
     public boolean fakeConnectionError = false;
     private List<Long> caughtFetchOfferCalls = new ArrayList<>();
     private int caughtFetchAllOfferCalls;
+    private List<Long> caughtCancelOfferCalls = new ArrayList<>();
 
     @Override
     public boolean ping() {
@@ -64,8 +65,10 @@ public class FakeClient implements InterviewClient {
     }
 
     @Override
-    public boolean cancelOffer(Long offerId) throws InterviewClientException {
-        return false;
+    public void cancelOffer(Long offerId) throws InterviewClientException {
+        caughtCancelOfferCalls.add(offerId);
+
+        guard();
     }
 
     public OfferRequest getCaughtRequest() {
@@ -108,7 +111,11 @@ public class FakeClient implements InterviewClient {
         return caughtFetchOfferCalls;
     }
 
-    public int getNoCaughtFetchAllOfferCalls() {
+    public int getNrCaughtFetchAllOfferCalls() {
         return caughtFetchAllOfferCalls;
+    }
+
+    public List<Long> getCaughtCancelOfferCalls() {
+        return caughtCancelOfferCalls;
     }
 }

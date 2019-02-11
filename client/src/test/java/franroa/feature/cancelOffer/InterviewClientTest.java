@@ -1,4 +1,4 @@
-package franroa.feature.fetchAllOffers;
+package franroa.feature.cancelOffer;
 
 import franroa.InterviewClient;
 import franroa.api.OfferListResponse;
@@ -7,6 +7,7 @@ import franroa.api.OfferResponse;
 import franroa.exception.InterviewClientException;
 import franroa.helper.IntegrationTestCase;
 import franroa.helper.factory.RequestFactory;
+import org.junit.Assert;
 import org.junit.Test;
 
 
@@ -16,20 +17,23 @@ public abstract class InterviewClientTest extends IntegrationTestCase {
     protected abstract InterviewClient createClient(String scenario);
 
     @Test
-    public void fetching_all_offers() throws InterviewClientException {
-        OfferRequest requestOne = RequestFactory.offer();
-        OfferRequest requestTwo = RequestFactory.offer();
+    public void deleting_the_offer() throws InterviewClientException {
+        OfferRequest request = RequestFactory.offer();
         InterviewClient client = createClient("valid");
-        client.createOffer(requestOne, "my-correlation-id");
-        client.createOffer(requestTwo, "my-correlation-id-2");
+        OfferResponse offer = client.createOffer(request, "my-correlation-id");
 
-        OfferListResponse response = client.getAllOffers();
+        client.cancelOffer(offer.id);
 
-        assertThat(response.offers.size()).isGreaterThan(1);
+        try {
+            client.getOffer(offer.id);
+            Assert.fail("The offer should not be queryable");
+        } catch (InterviewClientException exception) {
+            return;
+        }
     }
 
     @Test(expected = InterviewClientException.class)
     public void if_there_is_a_connection_error_it_throws_an_exception() throws InterviewClientException {
-        createClient("connection-error").getAllOffers();
+        createClient("connection-error").cancelOffer(155L);
     }
 }
