@@ -24,3 +24,4 @@
 - deploy with jenkins and docker to AWS
 - Metrics
 - Idempotency Keys
+- Type responses
