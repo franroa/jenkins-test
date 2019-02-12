@@ -1,36 +1,18 @@
-#!/usr/bin/env groovy
+pipeline {
+    agent any
 
-JENKINS_NODE_LABEL = 'dummy-label'
-
-
-    node(JENKINS_NODE_LABEL) {
-
-        properties([
-                buildDiscarder(
-                        logRotator(
-                                numToKeepStr: '30')
-                ),
-                [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false]
-        ])
-
-        stage('SCM checkout') {
-            checkout scm
+    stages {
+        stage('Build Assets') {
+            agent any
+            steps {
+                echo 'Building Assets'
+            }
         }
-
-        stage('Unit Test and package') {
-            env.PATH = "${tool 'maven-3.3.9'}/bin:${env.PATH}"
-            sh 'make unit-test'
-            junit '**/target/surefire-reports/TEST-*.xml'
+        stage('Test') {
+            agent any
+            steps {
+                echo 'Testing stuff...'
+            }
         }
-
-
-//    TODO
-
-//    Create Docker Image
-//
-//    Integration Test
-//
-//    Deploy if I'm on the master
-
     }
-
+}
