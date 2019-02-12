@@ -20,9 +20,9 @@ pipeline {
         }
 
         stage('Unit Test and package') {
-            env.PATH = "${tool 'maven-3.3.9'}/bin:${env.PATH}"
-            sh 'make unit-test'
-            junit '**/target/surefire-reports/TEST-*.xml'
+            withMaven(maven: 'maven-3.3.9') {
+                sh 'make unit-test'
+            }
         }
 
 
