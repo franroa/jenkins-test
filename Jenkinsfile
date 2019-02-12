@@ -21,15 +21,9 @@ pipeline {
 
         stage('Unit Test and package') {
             steps {
-                parallel("first": {
-                    withMaven {
-                        sh 'make unit-test'
-                    }
-                },
-                        "second": {
-                            echo "world"
-                        }
-                )
+                withMaven {
+                    sh 'make unit-test'
+                }
             }
 
         }
