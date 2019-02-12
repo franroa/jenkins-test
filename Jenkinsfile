@@ -22,7 +22,7 @@ pipeline {
         stage('Unit Test and package') {
             steps {
                 parallel("first": {
-                    withMaven(maven: 'maven-3.3.9') {
+                    withMaven {
                         sh 'make unit-test'
                     }
                 },
