@@ -10,22 +10,4 @@
 //    Deploy if I'm on the master
 
 
-pipeline {
-    agent any
-    stages {
-        stage('Build') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Unit Test and package') {
-            steps {
-                withMaven {
-                    sh 'make unit-test'
-                }
-            }
-
-        }
-    }
-}
+pipeline { agent { docker 'gcc:latest' } stages { stage('build') { steps { sh 'make --version' } } } }
