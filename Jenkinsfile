@@ -2,7 +2,6 @@
 
 JENKINS_NODE_LABEL = 'dummy-label'
 
-pipeline {
 
     node(JENKINS_NODE_LABEL) {
 
@@ -35,4 +34,3 @@ pipeline {
 
     }
 
-}
