@@ -29,3 +29,16 @@
 - Migrate maven to gradle
 - Type responses (The version of jackson that dropwizard is using seems to be failing when deserializing dates)
 - Change snake case to camel case in "expires_at"
+
+
+# HOW TO
+
+
+## Running jenkins in docker for developing the pipeline locally
+docker run  -u root --name jenkinsLocalContainer --rm -d -p 8080:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean
+
+1. docker exec -ti jenkinsLocalContainer bin/bash
+2. cat /var/jenkins_home/secrets/initialAdminPassword
+3. copy the outcome and paste it in the input that appears in http//localhost:8080
+4. Install whatever you want
+5. Create a freestyle job with the git project

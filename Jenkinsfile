@@ -2,25 +2,27 @@
 
 JENKINS_NODE_LABEL = 'dummy-label'
 
-node(JENKINS_NODE_LABEL) {
+pipeline {
 
-    properties([
-            buildDiscarder(
-                    logRotator(
-                            numToKeepStr: '30')
-            ),
-            [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false]
-    ])
+    node(JENKINS_NODE_LABEL) {
 
-    stage('SCM checkout') {
-        checkout scm
-    }
+        properties([
+                buildDiscarder(
+                        logRotator(
+                                numToKeepStr: '30')
+                ),
+                [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false]
+        ])
 
-    stage('Unit Test and package') {
-        env.PATH = "${tool 'maven-3.3.9'}/bin:${env.PATH}"
-        sh 'make unit-test'
-        junit '**/target/surefire-reports/TEST-*.xml'
-    }
+        stage('SCM checkout') {
+            checkout scm
+        }
+
+        stage('Unit Test and package') {
+            env.PATH = "${tool 'maven-3.3.9'}/bin:${env.PATH}"
+            sh 'make unit-test'
+            junit '**/target/surefire-reports/TEST-*.xml'
+        }
 
 
 //    TODO
@@ -30,5 +32,7 @@ node(JENKINS_NODE_LABEL) {
 //    Integration Test
 //
 //    Deploy if I'm on the master
+
+    }
 
 }
