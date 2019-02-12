@@ -1,4 +1,4 @@
-package franroa.feature;
+package franroa;
 
 import franroa.OfferConfiguration;
 import franroa.container.Container;

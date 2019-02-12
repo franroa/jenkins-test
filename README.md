@@ -21,7 +21,8 @@
  
 ## TODOs
 
-- deploy with jenkins and docker to AWS
+- Deploy with jenkins and docker to AWS
+- Test the client against the application running in a container from the docker image used in the deploy
 - Metrics
 - Idempotency Keys
 - Type responses

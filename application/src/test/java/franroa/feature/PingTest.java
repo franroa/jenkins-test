@@ -1,5 +1,6 @@
 package franroa.feature;
 
+import franroa.TestCase;
 import franroa.helper.TestResponse;
 import org.eclipse.jetty.http.HttpStatus;
 import org.junit.Test;
