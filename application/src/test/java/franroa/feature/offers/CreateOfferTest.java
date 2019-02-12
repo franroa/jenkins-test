@@ -2,10 +2,10 @@ package franroa.feature.offers;
 
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
+import franroa.TestCase;
 import franroa.api.enums.Currency;
 import franroa.core.Offer;
 import franroa.helper.RequestFactory;
-import franroa.TestCase;
 import franroa.helper.TestResponse;
 import franroa.jobs.DeleteOfferJob;
 import franroa.testing.facades.Queue;

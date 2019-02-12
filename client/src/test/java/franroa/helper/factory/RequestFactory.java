@@ -2,9 +2,7 @@ package franroa.helper.factory;
 
 import com.github.javafaker.Faker;
 import franroa.api.OfferRequest;
-import franroa.api.OfferResponse;
 import franroa.api.enums.Currency;
-import franroa.testing.helper.TestRequest;
 
 
 import java.sql.Timestamp;

@@ -2,13 +2,12 @@ package franroa.testing.facades;
 
 
 import franroa.container.Container;
-import franroa.testing.fakes.FakeQueue;
 import franroa.queue.Job;
+import franroa.testing.fakes.FakeQueue;
 
 
 import java.util.Date;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 public class Queue {
     private static FakeQueue queue;

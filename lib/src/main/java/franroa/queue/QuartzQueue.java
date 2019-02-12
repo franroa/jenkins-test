@@ -1,7 +1,6 @@
 package franroa.queue;
 
 import franroa.queue.config.QueueConfiguration;
-import franroa.queue.Job;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;

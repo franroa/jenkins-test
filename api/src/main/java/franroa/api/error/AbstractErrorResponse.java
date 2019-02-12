@@ -2,6 +2,8 @@ package franroa.api.error;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import franroa.filter.CorrelationIdRequestFilter;
+
 
 import java.util.ArrayList;
 
@@ -15,7 +17,4 @@ public class AbstractErrorResponse {
 
     @JsonProperty("affected_fields")
     public ArrayList<String> affectedFields;
-
-//    @JsonProperty("correlation_id")
-//    public String correlationId = CorrelationIdRequestFilter.getCorrelationId();
 }

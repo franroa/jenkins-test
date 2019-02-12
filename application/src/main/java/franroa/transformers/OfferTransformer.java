@@ -1,8 +1,8 @@
 package franroa.transformers;
 
 import franroa.api.OfferListResponse;
-import franroa.core.Offer;
 import franroa.api.OfferResponse;
+import franroa.core.Offer;
 
 
 import java.util.List;

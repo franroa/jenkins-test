@@ -3,7 +3,6 @@ package franroa.feature.fetchAllOffers;
 import franroa.InterviewClient;
 import franroa.api.OfferListResponse;
 import franroa.api.OfferRequest;
-import franroa.api.OfferResponse;
 import franroa.exception.InterviewClientException;
 import franroa.helper.IntegrationTestCase;
 import franroa.helper.factory.RequestFactory;

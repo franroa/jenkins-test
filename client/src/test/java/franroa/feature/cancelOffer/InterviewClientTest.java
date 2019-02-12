@@ -1,7 +1,6 @@
 package franroa.feature.cancelOffer;
 
 import franroa.InterviewClient;
-import franroa.api.OfferListResponse;
 import franroa.api.OfferRequest;
 import franroa.api.OfferResponse;
 import franroa.exception.InterviewClientException;
@@ -9,9 +8,6 @@ import franroa.helper.IntegrationTestCase;
 import franroa.helper.factory.RequestFactory;
 import org.junit.Assert;
 import org.junit.Test;
-
-
-import static org.assertj.core.api.Java6Assertions.assertThat;
 
 public abstract class InterviewClientTest extends IntegrationTestCase {
     protected abstract InterviewClient createClient(String scenario);

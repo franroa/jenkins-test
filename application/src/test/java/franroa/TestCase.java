@@ -1,14 +1,13 @@
 package franroa;
 
-import franroa.OfferConfiguration;
 import franroa.container.Container;
 import franroa.exceptions.mappers.ResourceNotFoundExceptionMapper;
-import franroa.resources.PingResource;
-import franroa.testing.helper.TestRequest;
 import franroa.helper.TestResponse;
 import franroa.queue.Queue;
 import franroa.queue.QueueFactory;
 import franroa.resources.OfferResource;
+import franroa.resources.PingResource;
+import franroa.testing.helper.TestRequest;
 import io.dropwizard.configuration.ConfigurationException;
 import io.dropwizard.configuration.YamlConfigurationFactory;
 import io.dropwizard.jackson.Jackson;

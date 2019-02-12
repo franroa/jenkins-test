@@ -4,6 +4,7 @@ package franroa.exceptions.mappers;
 import franroa.api.error.ResourceNotFoundResponse;
 import franroa.exceptions.ResourceNotFoundException;
 
+
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 

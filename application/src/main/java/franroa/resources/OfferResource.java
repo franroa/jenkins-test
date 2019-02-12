@@ -7,7 +7,6 @@ import franroa.core.Model;
 import franroa.core.Offer;
 import franroa.jobs.DeleteOfferJob;
 import franroa.transformers.OfferTransformer;
-import org.slf4j.LoggerFactory;
 
 
 import javax.validation.Valid;

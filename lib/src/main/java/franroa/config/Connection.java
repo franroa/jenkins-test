@@ -4,6 +4,7 @@ import io.dropwizard.db.ManagedDataSource;
 import org.javalite.activejdbc.Base;
 import org.slf4j.LoggerFactory;
 
+
 import javax.ws.rs.WebApplicationException;
 import java.sql.SQLException;
 

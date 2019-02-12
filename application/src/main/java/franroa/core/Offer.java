@@ -13,6 +13,7 @@ public class Offer extends Model {
         offer.set("currency", request.currency);
         offer.set("expires_at", Timestamp.valueOf(request.expires_at));
         offer.saveIt();
+
         return offer;
     }
 }

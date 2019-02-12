@@ -1,7 +1,7 @@
 package franroa.feature.offers;
 
-import franroa.core.Offer;
 import franroa.TestCase;
+import franroa.core.Offer;
 import franroa.helper.ModelFactory;
 import franroa.helper.TestResponse;
 import org.junit.Test;
