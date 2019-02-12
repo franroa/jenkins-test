@@ -15,7 +15,7 @@ public abstract class Model extends org.javalite.activejdbc.Model {
             throw new ResourceNotFoundException();
         }
 
-        if(model == null) {
+        if (model == null) {
             throw new ResourceNotFoundException();
         } else {
             return (T) model;

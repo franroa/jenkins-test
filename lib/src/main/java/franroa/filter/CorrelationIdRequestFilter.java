@@ -25,7 +25,7 @@ public class CorrelationIdRequestFilter implements ContainerRequestFilter {
     public void filter(ContainerRequestContext containerRequestContext) throws IOException {
         String correlationId = containerRequestContext.getHeaderString(headerKey);
 
-        if (correlationId == null ) {
+        if (correlationId == null) {
             correlationId = UUID.randomUUID().toString();
         }
 

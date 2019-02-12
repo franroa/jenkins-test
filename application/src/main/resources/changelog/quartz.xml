@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
     <changeSet author="quartz.generated" id="1">
         <createTable tableName="ZZ_QRTZ_CALENDARS">
             <column name="SCHED_NAME" type="NVARCHAR(100)">
@@ -219,126 +221,137 @@
     </changeSet>
 
     <changeSet author="quartz.generated" id="2">
-        <addForeignKeyConstraint baseColumnNames="SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP" baseTableName="ZZ_QRTZ_CRON_TRIGGERS" constraintName="FK_ZZ_QRTZ_CRON_TRIGGERS_ZZ_QRTZ_TRIGGERS"
+        <addForeignKeyConstraint baseColumnNames="SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP"
+                                 baseTableName="ZZ_QRTZ_CRON_TRIGGERS"
+                                 constraintName="FK_ZZ_QRTZ_CRON_TRIGGERS_ZZ_QRTZ_TRIGGERS"
                                  deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION"
-                                 referencedColumnNames="SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP" referencedTableName="ZZ_QRTZ_TRIGGERS" referencesUniqueColumn="false"/>
+                                 referencedColumnNames="SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP"
+                                 referencedTableName="ZZ_QRTZ_TRIGGERS" referencesUniqueColumn="false"/>
 
-        <addForeignKeyConstraint baseColumnNames="SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP" baseTableName="ZZ_QRTZ_SIMPLE_TRIGGERS" constraintName="FK_ZZ_QRTZ_SIMPLE_TRIGGERS_ZZ_QRTZ_TRIGGERS"
+        <addForeignKeyConstraint baseColumnNames="SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP"
+                                 baseTableName="ZZ_QRTZ_SIMPLE_TRIGGERS"
+                                 constraintName="FK_ZZ_QRTZ_SIMPLE_TRIGGERS_ZZ_QRTZ_TRIGGERS"
                                  deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION"
-                                 referencedColumnNames="SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP" referencedTableName="ZZ_QRTZ_TRIGGERS" referencesUniqueColumn="false"/>
+                                 referencedColumnNames="SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP"
+                                 referencedTableName="ZZ_QRTZ_TRIGGERS" referencesUniqueColumn="false"/>
 
-        <addForeignKeyConstraint baseColumnNames="SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP" baseTableName="ZZ_QRTZ_SIMPROP_TRIGGERS" constraintName="FK_ZZ_QRTZ_SIMPROP_TRIGGERS_ZZ_QRTZ_TRIGGERS"
+        <addForeignKeyConstraint baseColumnNames="SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP"
+                                 baseTableName="ZZ_QRTZ_SIMPROP_TRIGGERS"
+                                 constraintName="FK_ZZ_QRTZ_SIMPROP_TRIGGERS_ZZ_QRTZ_TRIGGERS"
                                  deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION"
-                                 referencedColumnNames="SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP" referencedTableName="ZZ_QRTZ_TRIGGERS" referencesUniqueColumn="false"/>
+                                 referencedColumnNames="SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP"
+                                 referencedTableName="ZZ_QRTZ_TRIGGERS" referencesUniqueColumn="false"/>
 
-        <addForeignKeyConstraint baseColumnNames="SCHED_NAME, JOB_NAME, JOB_GROUP" baseTableName="ZZ_QRTZ_TRIGGERS" constraintName="FK_ZZ_QRTZ_TRIGGERS_ZZ_QRTZ_JOB_DETAILS"
+        <addForeignKeyConstraint baseColumnNames="SCHED_NAME, JOB_NAME, JOB_GROUP" baseTableName="ZZ_QRTZ_TRIGGERS"
+                                 constraintName="FK_ZZ_QRTZ_TRIGGERS_ZZ_QRTZ_JOB_DETAILS"
                                  deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION"
-                                 referencedColumnNames="SCHED_NAME, JOB_NAME, JOB_GROUP" referencedTableName="ZZ_QRTZ_JOB_DETAILS" referencesUniqueColumn="false"/>
+                                 referencedColumnNames="SCHED_NAME, JOB_NAME, JOB_GROUP"
+                                 referencedTableName="ZZ_QRTZ_JOB_DETAILS" referencesUniqueColumn="false"/>
     </changeSet>
 
     <changeSet author="quartz.generated" id="3">
         <createIndex indexName="IDX_ZZ_QRTZ_T_J" tableName="ZZ_QRTZ_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="JOB_NAME" />
-            <column name="JOB_GROUP" />
+            <column name="SCHED_NAME"/>
+            <column name="JOB_NAME"/>
+            <column name="JOB_GROUP"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_T_JG" tableName="ZZ_QRTZ_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="JOB_GROUP" />
+            <column name="SCHED_NAME"/>
+            <column name="JOB_GROUP"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_T_C" tableName="ZZ_QRTZ_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="CALENDAR_NAME" />
+            <column name="SCHED_NAME"/>
+            <column name="CALENDAR_NAME"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_T_G" tableName="ZZ_QRTZ_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="TRIGGER_GROUP" />
+            <column name="SCHED_NAME"/>
+            <column name="TRIGGER_GROUP"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_T_STATE" tableName="ZZ_QRTZ_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="TRIGGER_STATE" />
+            <column name="SCHED_NAME"/>
+            <column name="TRIGGER_STATE"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_T_N_STATE" tableName="ZZ_QRTZ_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="TRIGGER_NAME" />
-            <column name="TRIGGER_GROUP" />
-            <column name="TRIGGER_STATE" />
+            <column name="SCHED_NAME"/>
+            <column name="TRIGGER_NAME"/>
+            <column name="TRIGGER_GROUP"/>
+            <column name="TRIGGER_STATE"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_T_N_G_STATE" tableName="ZZ_QRTZ_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="TRIGGER_GROUP" />
-            <column name="TRIGGER_STATE" />
+            <column name="SCHED_NAME"/>
+            <column name="TRIGGER_GROUP"/>
+            <column name="TRIGGER_STATE"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_T_NEXT_FIRE_TIME" tableName="ZZ_QRTZ_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="NEXT_FIRE_TIME" />
+            <column name="SCHED_NAME"/>
+            <column name="NEXT_FIRE_TIME"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_T_NFT_ST" tableName="ZZ_QRTZ_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="TRIGGER_STATE" />
-            <column name="NEXT_FIRE_TIME" />
+            <column name="SCHED_NAME"/>
+            <column name="TRIGGER_STATE"/>
+            <column name="NEXT_FIRE_TIME"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_T_NFT_MISFIRE" tableName="ZZ_QRTZ_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="MISFIRE_INSTR" />
-            <column name="NEXT_FIRE_TIME" />
+            <column name="SCHED_NAME"/>
+            <column name="MISFIRE_INSTR"/>
+            <column name="NEXT_FIRE_TIME"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_T_NFT_ST_MISFIRE" tableName="ZZ_QRTZ_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="MISFIRE_INSTR" />
-            <column name="NEXT_FIRE_TIME" />
-            <column name="TRIGGER_STATE" />
+            <column name="SCHED_NAME"/>
+            <column name="MISFIRE_INSTR"/>
+            <column name="NEXT_FIRE_TIME"/>
+            <column name="TRIGGER_STATE"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_T_NFT_ST_MISFIRE_GRP" tableName="ZZ_QRTZ_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="MISFIRE_INSTR" />
-            <column name="NEXT_FIRE_TIME" />
-            <column name="TRIGGER_GROUP" />
-            <column name="TRIGGER_STATE" />
+            <column name="SCHED_NAME"/>
+            <column name="MISFIRE_INSTR"/>
+            <column name="NEXT_FIRE_TIME"/>
+            <column name="TRIGGER_GROUP"/>
+            <column name="TRIGGER_STATE"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_FT_TRIG_INST_NAME" tableName="ZZ_QRTZ_FIRED_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="INSTANCE_NAME" />
+            <column name="SCHED_NAME"/>
+            <column name="INSTANCE_NAME"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_FT_INST_JOB_REQ_RCVRY" tableName="ZZ_QRTZ_FIRED_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="INSTANCE_NAME" />
+            <column name="SCHED_NAME"/>
+            <column name="INSTANCE_NAME"/>
             <column name="REQUESTS_RECOVERY"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_FT_J_G" tableName="ZZ_QRTZ_FIRED_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="JOB_NAME" />
-            <column name="JOB_GROUP" />
+            <column name="SCHED_NAME"/>
+            <column name="JOB_NAME"/>
+            <column name="JOB_GROUP"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_FT_JG" tableName="ZZ_QRTZ_FIRED_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="JOB_GROUP" />
+            <column name="SCHED_NAME"/>
+            <column name="JOB_GROUP"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_FT_T_G" tableName="ZZ_QRTZ_FIRED_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="TRIGGER_NAME" />
-            <column name="TRIGGER_GROUP" />
+            <column name="SCHED_NAME"/>
+            <column name="TRIGGER_NAME"/>
+            <column name="TRIGGER_GROUP"/>
         </createIndex>
 
         <createIndex indexName="IDX_ZZ_QRTZ_FT_TG" tableName="ZZ_QRTZ_FIRED_TRIGGERS">
-            <column name="SCHED_NAME" />
-            <column name="TRIGGER_GROUP" />
+            <column name="SCHED_NAME"/>
+            <column name="TRIGGER_GROUP"/>
         </createIndex>
     </changeSet>
 </databaseChangeLog>

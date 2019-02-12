@@ -10,10 +10,9 @@ import java.lang.annotation.Target;
 
 @Documented
 @Constraint(validatedBy = {EnumValidator.class})
-@Target({ ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER })
+@Target({ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Enum
-{
+public @interface Enum {
     String message() default "Invalid value. This is not permitted";
 
     Class<?>[] groups() default {};

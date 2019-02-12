@@ -4,11 +4,12 @@ import java.util.HashMap;
 import java.util.concurrent.Callable;
 
 public class Container {
-    private static HashMap<Class,Object> bindings = new HashMap<>();
-    private static HashMap<Class,Object> singletons = new HashMap<>();
-    private static HashMap<Class,Object> overrides = new HashMap<>();
+    private static HashMap<Class, Object> bindings = new HashMap<>();
+    private static HashMap<Class, Object> singletons = new HashMap<>();
+    private static HashMap<Class, Object> overrides = new HashMap<>();
 
-    private Container() {}
+    private Container() {
+    }
 
     public static <T> void bind(Class<T> clazz, Callable<T> factory) {
         bindings.put(clazz, factory);

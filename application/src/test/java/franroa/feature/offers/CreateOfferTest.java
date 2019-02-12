@@ -57,7 +57,7 @@ public class CreateOfferTest extends TestCase {
     }
 
     @Test
-    @DataProvider({ "name", "price", "currency", "expires_at" })
+    @DataProvider({"name", "price", "currency", "expires_at"})
     public void some_fields_are_required(String requiredField) {
         TestRequest request = RequestFactory.offer();
         request.remove(requiredField);

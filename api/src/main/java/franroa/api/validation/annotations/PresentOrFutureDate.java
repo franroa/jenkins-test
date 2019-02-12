@@ -10,10 +10,9 @@ import java.lang.annotation.Target;
 
 @Documented
 @Constraint(validatedBy = {PresentOrFutureDateValidator.class})
-@Target({ ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER })
+@Target({ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface PresentOrFutureDate
-{
+public @interface PresentOrFutureDate {
     String message() default " Date has to be placed in the present or in the future";
 
     Class<?>[] groups() default {};

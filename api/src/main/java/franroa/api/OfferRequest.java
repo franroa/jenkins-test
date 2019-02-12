@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OfferRequest {
     @NotNull
-    @Size(max=255)
+    @Size(max = 255)
     @JsonProperty("name")
     public String name;
 

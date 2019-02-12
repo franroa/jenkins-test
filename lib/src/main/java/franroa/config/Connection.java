@@ -12,10 +12,12 @@ public final class Connection {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Connection.class);
     private static ManagedDataSource dataSource;
-    private Connection() {}
+
+    private Connection() {
+    }
 
     public static void open() {
-        if (! Base.hasConnection()) {
+        if (!Base.hasConnection()) {
             Base.open(dataSource);
 
             try {

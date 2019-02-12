@@ -5,7 +5,8 @@ import javax.validation.ConstraintValidatorContext;
 
 public class TimestampFormatValidator implements ConstraintValidator<Timestamp, String> {
     @Override
-    public void initialize(Timestamp annotation) {}
+    public void initialize(Timestamp annotation) {
+    }
 
     @Override
     public boolean isValid(String valueForValidation, ConstraintValidatorContext constraintValidatorContext) {

@@ -16,6 +16,6 @@ public abstract class InterviewClientTest extends IntegrationTestCase {
 
     @Test
     public void returns_false_when_using_invalid_port() {
-       Assertions.assertThat(createClient("connection-error").ping()).isFalse();
+        Assertions.assertThat(createClient("connection-error").ping()).isFalse();
     }
 }

@@ -24,7 +24,7 @@ public class TestResponse<T> {
         return (T) this;
     }
 
-    public T  assertDataInArrayNode(String value) {
+    public T assertDataInArrayNode(String value) {
         for (int i = 0; i < jsonResponse.size(); i++) {
             if (jsonResponse.get(i) != null && jsonResponse.get(i).asText().equals(value)) {
                 return (T) this;
@@ -35,8 +35,8 @@ public class TestResponse<T> {
         return (T) this;
     }
 
-    public T  assertDataInArrayNode(String key, String value) {
-        if (! jsonResponse.get(key).isArray()) {
+    public T assertDataInArrayNode(String key, String value) {
+        if (!jsonResponse.get(key).isArray()) {
             Assert.fail("value : " + value + " was not found in the array");
             return (T) this;
         }
@@ -56,7 +56,7 @@ public class TestResponse<T> {
         return false;
     }
 
-    public T  assertDataInArrayNode(Integer index, String value) {
+    public T assertDataInArrayNode(Integer index, String value) {
         if (jsonResponse.get(index) != null && jsonResponse.get(index).asText().equals(value)) {
             return (T) this;
         }
@@ -79,8 +79,8 @@ public class TestResponse<T> {
     }
 
     public T assertKeyExists(String key) {
-        ((IterableAssert)Assertions.assertThat(this.jsonResponse).overridingErrorMessage("The key '" + key + "' does not exist in {}", new Object[0])).isNotNull();
-        ((IterableAssert)Assertions.assertThat(this.jsonResponse.get(key)).overridingErrorMessage("The key '" + key + "' does not exist in " + this.jsonResponse.toString(), new Object[0])).isNotNull();
+        ((IterableAssert) Assertions.assertThat(this.jsonResponse).overridingErrorMessage("The key '" + key + "' does not exist in {}", new Object[0])).isNotNull();
+        ((IterableAssert) Assertions.assertThat(this.jsonResponse.get(key)).overridingErrorMessage("The key '" + key + "' does not exist in " + this.jsonResponse.toString(), new Object[0])).isNotNull();
 
         return (T) this;
     }

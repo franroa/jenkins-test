@@ -6,23 +6,23 @@
     <changeSet author="franroa" id="1">
         <createTable tableName="offers" schemaName="public">
             <column name="id" type="BIGINT" autoIncrement="true">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_offers" />
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_offers"/>
             </column>
 
             <column name="name" type="VARCHAR(255)">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
 
             <column name="price" type="FLOAT">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
 
             <column name="currency" type="VARCHAR(255)">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
 
             <column name="expires_at" type="TIMESTAMP">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>

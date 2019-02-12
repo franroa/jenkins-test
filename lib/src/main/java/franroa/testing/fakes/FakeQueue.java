@@ -42,13 +42,14 @@ public class FakeQueue implements Queue {
 
         Entry queuedJob;
         do {
-            if(!var3.hasNext()) {
+            if (!var3.hasNext()) {
                 Assert.fail("Job was not pushed into the queue!");
                 return;
             }
 
-            queuedJob = (Entry)var3.next();
-        } while(!((Job)queuedJob.getKey()).getClass().equals(jobClass) || !((Boolean)compareFunction.apply((T)queuedJob.getKey(), (Date)queuedJob.getValue())).booleanValue());
+            queuedJob = (Entry) var3.next();
+        }
+        while (!((Job) queuedJob.getKey()).getClass().equals(jobClass) || !((Boolean) compareFunction.apply((T) queuedJob.getKey(), (Date) queuedJob.getValue())).booleanValue());
 
     }
 }

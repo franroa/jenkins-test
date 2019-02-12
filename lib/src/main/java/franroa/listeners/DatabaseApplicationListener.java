@@ -11,7 +11,8 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class DatabaseApplicationListener implements ApplicationEventListener {
     @Override
-    public void onEvent(ApplicationEvent applicationEvent) { }
+    public void onEvent(ApplicationEvent applicationEvent) {
+    }
 
     @Override
     public RequestEventListener onRequest(RequestEvent requestEvent) {

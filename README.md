@@ -1,4 +1,4 @@
-# interview
+# INTERVIEW
 
 ## Assumptions:
 
@@ -18,11 +18,13 @@
  - Another config will be set only for jenkins. That one will have the postgres real database, and the local application
  should be run on an in-memory database
  - All the incoming and outgoing content can be logged
+ - The modules "lib" and "client" are actually separated projects, not only separated modules
  
-## TODOs
+## TODOs -> From development to operations
 
 - Deploy with jenkins and docker to AWS
 - Test the client against the application running in a container from the docker image used in the deploy
 - Metrics
 - Idempotency Keys
-- Type responses
+- Type responses (The version of jackson that dropwizard is using seems to be failing when deserializing dates)
+- Migrate maven to gradle

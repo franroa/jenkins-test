@@ -65,9 +65,9 @@ public class TestCase {
     }
 
     private static void loadConfiguration() {
-        if(config == null) {
+        if (config == null) {
             try {
-                config = (OfferConfiguration)(new YamlConfigurationFactory(OfferConfiguration.class, Validation.buildDefaultValidatorFactory().getValidator(), Jackson.newObjectMapper(), "dw")).build(new File(ResourceHelpers.resourceFilePath("config.yml")));
+                config = (OfferConfiguration) (new YamlConfigurationFactory(OfferConfiguration.class, Validation.buildDefaultValidatorFactory().getValidator(), Jackson.newObjectMapper(), "dw")).build(new File(ResourceHelpers.resourceFilePath("config.yml")));
             } catch (IOException | ConfigurationException var2) {
                 throw new RuntimeException(var2);
             }
@@ -79,7 +79,7 @@ public class TestCase {
     }
 
     private static void migrate() throws LiquibaseException, SQLException {
-        if(!migrated) {
+        if (!migrated) {
             LogFactory.getInstance().getLog().setLogLevel(LogLevel.WARNING);
             Liquibase liquibase = new Liquibase("changelog/master.xml", new ClassLoaderResourceAccessor(), new JdbcConnection(Base.connection()));
             liquibase.dropAll();

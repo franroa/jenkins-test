@@ -44,7 +44,7 @@ public abstract class InterviewClientTest extends IntegrationTestCase {
     }
 
     @Test(expected = InterviewClientException.class)
-    @DataProvider(value = { "name", "price", "currency", "expires_at" })
+    @DataProvider(value = {"name", "price", "currency", "expires_at"})
     public void test(String field) throws InterviewClientException {
         OfferRequest request = RequestFactory.offer();
 

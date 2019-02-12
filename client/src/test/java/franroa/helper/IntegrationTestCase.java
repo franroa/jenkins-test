@@ -58,7 +58,7 @@ public abstract class IntegrationTestCase {
     }
 
     private void startApplication() {
-        if (! shouldStartTamer()) return;
+        if (!shouldStartTamer()) return;
 
         ProcessBuilder pb = new ProcessBuilder("java", "-jar", "application.jar", "server", "config.yml");
         pb.directory(new File(resourceFilePath("interviewclient")));
@@ -66,14 +66,15 @@ public abstract class IntegrationTestCase {
             interview = pb.start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(interview.getInputStream()));
 
-            while(! reader.readLine().contains("org.eclipse.jetty.server.Server: Started")) {}
+            while (!reader.readLine().contains("org.eclipse.jetty.server.Server: Started")) {
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private void copyApplicationJar() {
-        if (! shouldStartTamer()) return;
+        if (!shouldStartTamer()) return;
 
         try {
             String interviewVersion = "0.0.1";

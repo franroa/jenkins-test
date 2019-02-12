@@ -75,7 +75,7 @@ public class FakeClient implements InterviewClient {
 
         try {
             fakeOffers.offers.remove(fakeOffers.offers.get(Integer.valueOf(String.valueOf(offerId))));
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw new InterviewClientException();
         }
 
@@ -99,7 +99,7 @@ public class FakeClient implements InterviewClient {
     private void guard(Object request) throws InterviewClientException {
         guard();
 
-        if (! Validation.buildDefaultValidatorFactory().getValidator().validate(request).isEmpty()) {
+        if (!Validation.buildDefaultValidatorFactory().getValidator().validate(request).isEmpty()) {
             throw new InterviewClientException();
         }
     }
