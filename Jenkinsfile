@@ -20,9 +20,18 @@ pipeline {
         }
 
         stage('Unit Test and package') {
-            withMaven(maven: 'maven-3.3.9') {
-                sh 'make unit-test'
+            steps {
+                parallel("first": {
+                    withMaven(maven: 'maven-3.3.9') {
+                        sh 'make unit-test'
+                    }
+                },
+                        "second": {
+                            echo "world"
+                        }
+                )
             }
+
         }
 
 
