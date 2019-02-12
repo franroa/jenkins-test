@@ -26,5 +26,6 @@
 - Test the client against the application running in a container from the docker image used in the deploy
 - Metrics
 - Idempotency Keys
-- Type responses (The version of jackson that dropwizard is using seems to be failing when deserializing dates)
 - Migrate maven to gradle
+- Type responses (The version of jackson that dropwizard is using seems to be failing when deserializing dates)
+- Change snake case to camel case in "expires_at"
