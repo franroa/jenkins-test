@@ -37,6 +37,7 @@
 ## Running jenkins in docker for developing the pipeline locally
 docker run  -u root --name jenkinsLocalContainer --rm   -d -p 8888:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean
 docker cp secrets/. jenkinsLocalContainer:/var/jenkins_home/workspace/secrets
+docker cp secrets/. jenkinsLocalContainer:/var/jenkins_home/workspace/jenkins-test_master/secrets
 
 In the container: 
 apk update \
@@ -46,7 +47,7 @@ apk update \
         wget \
         git \
     && apk add \
-        bash tree
+        bash tree maven
 
 
 1. docker exec -ti jenkinsLocalContainer bin/bash
