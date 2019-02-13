@@ -23,10 +23,7 @@ pipeline {
             steps {
                 parallel(
                         a: {
-                            sh 'make unit-test'
-                            sh 'tree'
-                        },
-                        b: {
+                            sh 'cd ..'
                             sh 'tree'
                         }
                 )

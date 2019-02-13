@@ -17,8 +17,8 @@ NON_PRODUCTION_AWS_ACCOUNT?="..."
 # sh "mvn --batch-mode -V -U -e clean deploy -Dsurefire.useFile=false"
 
 unit-test:
-	cd ../..
-	tree
+	cd ~
+	ls
 	# ./kickstart.sh
 	# cd application
 	# mvn clean test
