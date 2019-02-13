@@ -22,6 +22,8 @@ pipeline {
         stage('Unit Test and package') {
             steps {
                 sh 'make unit-test'
+                sh 'll'
+                sh 'tree'
             }
         }
     }
