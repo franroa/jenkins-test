@@ -21,9 +21,7 @@ pipeline {
 
         stage('Unit Test and package') {
             steps {
-                withMaven {
-                    sh 'make unit-test'
-                }
+                sh 'make unit-test'
             }
         }
     }
