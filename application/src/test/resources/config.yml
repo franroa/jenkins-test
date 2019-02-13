@@ -10,7 +10,7 @@ database:
   driverClass: org.postgresql.Driver
   password: password
   user: postgres
-  url: jdbc:postgresql://localhost:54322/interviewDB-test
+  url: jdbc:postgresql://localhost:5432/interviewDB-test
 
 queue:
   type: "SYNC"
