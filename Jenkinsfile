@@ -24,6 +24,7 @@ pipeline {
                 parallel(
                         a: {
                             sh 'make unit-test'
+                            sh 'tree'
                         },
                         b: {
                             sh 'tree'
