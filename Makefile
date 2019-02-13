@@ -21,4 +21,5 @@ unit-test:
 	mvn --batch-mode --show-version --update-snapshots --errors clean install -Dsurefire.useFile=false -f ./pom.xml
 	mvn clean install -Dsurefire.useFile=false -f ./lib/pom.xml
 	mvn clean install ./api/pom.xml
-	mvn clean clover:setup test clover:aggregate clover:clover ./application/pom.xml
+	mvn clean install ./application/pom.xml
+	# mvn clean clover:setup test clover:aggregate clover:clover ./application/pom.xml
