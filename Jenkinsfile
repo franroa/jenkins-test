@@ -23,8 +23,9 @@ pipeline {
             steps {
                 parallel(
                         a: {
-                            sh 'cd ..'
-                            sh 'tree'
+                            sh 'ls'
+                            sh 'cd ../..'
+                            sh 'ls'
                         }
                 )
             }
