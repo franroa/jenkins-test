@@ -20,8 +20,11 @@ unit-test:
 	cd ~
 	ls
 	./kickstart.sh
+	ls
 	cd application
 	touch test
+	touch application/test
+	ls
 	mvn clean test
 	# mvn --batch-mode --show-version --update-snapshots --errors clean install -Dmaven.test.skip=true -Dsurefire.useFile=false -f ./pom.xml
 	# cd application
