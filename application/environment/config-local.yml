@@ -15,7 +15,7 @@ server:
 database:
   driverClass: org.postgresql.Driver
   user: sa
-  url: jdbc:postgresql://localhost:54322/interviewDB
+  url: jdbc:postgresql://localhost:5432/interviewDB
 
 queue:
   type: "QUARTZ"
