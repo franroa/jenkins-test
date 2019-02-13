@@ -21,9 +21,14 @@ pipeline {
 
         stage('Unit Test and package') {
             steps {
-                sh 'make unit-test'
-                sh 'll'
-                sh 'tree'
+                parallel(
+                        a: {
+                            sh 'make unit-test'
+                        },
+                        b: {
+                            sh 'tree'
+                        }
+                )
             }
         }
     }
