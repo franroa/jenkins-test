@@ -24,6 +24,7 @@ pipeline {
                 parallel(
                         a: {
                             sh 'mkdir secrets'
+                            sh 'ls'
                             sh 'make unit-test'
                         },
                         b: {
