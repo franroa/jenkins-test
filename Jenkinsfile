@@ -11,9 +11,7 @@
 
 
 pipeline {
-    agent {
-        docker 'gcc:latest'
-    }
+    any
     stages {
         stage('Build') {
             steps {
