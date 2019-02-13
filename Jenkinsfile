@@ -23,9 +23,11 @@ pipeline {
             steps {
                 parallel(
                         a: {
-                            sh 'ls'
-                            sh 'cd ../..'
-                            sh 'ls'
+                            sh 'mkdir secrets'
+                            sh 'make unit-test'
+                        },
+                        b: {
+                            sh 'tree'
                         }
                 )
             }
