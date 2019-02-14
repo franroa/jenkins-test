@@ -22,6 +22,7 @@ test:
 
 docker:
 	#mvn clean deploy -DskipTests=true
-	@cp application/target/interview-application.jar application/docker
+	mvn clean package -DskipTests=true
+	@cp application/target/interview-application-0.0.1.jar application/docker
 	@cp -R ./application/environments application/docker
 	docker build -t ${DOCKERTAG} application/docker

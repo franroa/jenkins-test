@@ -23,14 +23,7 @@ pipeline {
                 }
             }
             steps {
-                parallel(
-                    a: {
-                        sh 'make docker'
-                    },
-                    b: {
-                        sh 'tree'
-                    }
-                )
+                sh 'make docker'
             }
         }
     }
