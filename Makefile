@@ -21,7 +21,7 @@ test:
 	mvn --batch-mode --show-version --update-snapshots --errors clean clover:setup test clover:aggregate clover:clover -Dsurefire.useFile=false -f ./pom.xml
 
 docker:
-	mvn clean deploy -DskipTests=true
+	#mvn clean deploy -DskipTests=true
 	@cp application/target/interview-application.jar application/docker
 	@cp -R ./application/environments application/docker
 	docker build -t ${DOCKERTAG} application/docker

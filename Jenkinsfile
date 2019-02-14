@@ -11,7 +11,8 @@ pipeline {
 
         stage('Unit/Integration Test') {
             steps {
-                sh 'make test'
+                sh 'ls'
+//                sh 'make test'
             }
         }
 
