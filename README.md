@@ -27,6 +27,9 @@
 - Metrics
 - Idempotency Keys
 - Migrate maven to gradle
+- The deploy of the application and the client has to be carefully studied. There are dependencies there. 
+The client should always be up to date
+- run the database container in the jenkins container, not to the local machine (to access it through "localhost")
 - Type responses (The version of jackson that dropwizard is using seems to be failing when deserializing dates)
 - Change snake case to camel case in "expires_at"
 
