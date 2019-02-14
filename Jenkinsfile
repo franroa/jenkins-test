@@ -11,17 +11,17 @@ pipeline {
 
         stage('Unit/Integration Test') {
             steps {
-                sh 'ls'
-//                sh 'make test'
+                sh 'make test'
+            }
+        }
+
+        when {
+            expression {
+                return isRunningMaster()
             }
         }
 
         stage('Publish') {
-            when {
-                expression {
-                    return isRunningMaster()
-                }
-            }
             steps {
                 sh 'make docker'
             }
