@@ -17,17 +17,9 @@ NON_PRODUCTION_AWS_ACCOUNT?="..."
 # sh "mvn --batch-mode -V -U -e clean deploy -Dsurefire.useFile=false"
 
 unit-test:
-	cd ~
-	ls
 	./kickstart.sh
+	mvn --batch-mode --show-version --update-snapshots --errors clean install -Dmaven.test.skip=true -Dsurefire.useFile=false -f ./pom.xml
 	cd application
-	# mkdir application/secrets
-	# touch application/secrets/database
-	# echo "sa" > application/secrets/database
-	ls
-	mvn clean test
-	# mvn --batch-mode --show-version --update-snapshots --errors clean install -Dmaven.test.skip=true -Dsurefire.useFile=false -f ./pom.xml
-	# cd application
-	# mvn clean clover:setup test clover:aggregate clover:clover
-	# cd ../client
-	# mvn clean clover:setup test clover:aggregate clover:clover
+	mvn clean clover:setup test clover:aggregate clover:clover
+	cd ../client
+	mvn clean clover:setup test clover:aggregate clover:clover
