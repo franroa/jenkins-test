@@ -15,19 +15,20 @@ pipeline {
             }
         }
 
-        if (isRunningMaster()) {
-            stage('Package') {
-                steps {
-                    parallel(
-                            a: {
-                                sh 'make docker'
-                            },
-                            b: {
-                                sh 'tree'
-                            }
-                    )
+        script {
+            if (isRunningMaster()) {
+                stage('Package') {
+                    steps {
+                        parallel(
+                                a: {
+                                    sh 'make docker'
+                                },
+                                b: {
+                                    sh 'tree'
+                                }
+                        )
+                    }
                 }
-            }
 
 //            stage('Publish staging image') {
 //                steps {
@@ -44,6 +45,7 @@ pipeline {
 //                    }
 //                }
 //            }
+            }
         }
     }
 }
