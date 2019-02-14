@@ -18,7 +18,7 @@ NON_PRODUCTION_AWS_ACCOUNT?="..."
 
 test:
 	./kickstart.sh
-	mvn --batch-mode --show-version --update-snapshots --errors clean clover:setup test clover:aggregate clover:clover -Dsurefire.useFile=false -f ./pom.xml
+	mvn --batch-mode --show-version --update-snapshots --errors clean clover:setup package clover:aggregate clover:clover -Dsurefire.useFile=false -f ./pom.xml
 
 docker:
 	#mvn clean deploy -DskipTests=true
