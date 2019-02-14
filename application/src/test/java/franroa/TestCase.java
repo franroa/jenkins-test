@@ -61,7 +61,7 @@ public class TestCase {
     }
 
     private static void openDatabaseConnection() {
-        Base.open("org.postgresql.Driver", "jdbc:postgresql://172.17.0.3:54322/interviewDB-test", "postgres", "password");
+        Base.open("org.postgresql.Driver", "jdbc:postgresql://172.17.0.1:5432/interviewDB-test", "postgres", "password");
     }
 
     private static void loadConfiguration() {
