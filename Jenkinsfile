@@ -1,28 +1,17 @@
 #!/usr/bin/env groovy
 
-pipeline {
-    agent any
+node {
     stages {
         stage('Build') {
-            steps {
-                checkout scm
-            }
+            checkout scm
         }
 
         stage('Unit/Integration Test') {
-            steps {
-                sh 'make test'
-            }
+            sh 'make test'
         }
 
-        when {
-            expression {
-                return isRunningMaster()
-            }
-        }
-
-        stage('Publish') {
-            steps {
+        if (isRunningMaster()) {
+            stage('Publish') {
                 sh 'make docker'
             }
         }
