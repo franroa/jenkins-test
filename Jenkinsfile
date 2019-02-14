@@ -1,19 +1,17 @@
 #!/usr/bin/env groovy
 
 node {
-    stages {
-        stage('Build') {
-            checkout scm
-        }
+    stage('Build') {
+        checkout scm
+    }
 
-        stage('Unit/Integration Test') {
-            sh 'make test'
-        }
+    stage('Unit/Integration Test') {
+        sh 'make test'
+    }
 
-        if (isRunningMaster()) {
-            stage('Publish') {
-                sh 'make docker'
-            }
+    if (isRunningMaster()) {
+        stage('Publish') {
+            sh 'make docker'
         }
     }
 }
