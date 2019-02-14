@@ -19,11 +19,11 @@ NON_PRODUCTION_AWS_ACCOUNT?="..."
 test:
 	./kickstart.sh
 	mvn --batch-mode --show-version --update-snapshots --errors clean install -Dmaven.test.skip=true -Dsurefire.useFile=false -f ./pom.xml
-	mvn --errors clean install -Dmaven.test.skip=true -Dsurefire.useFile=false -f ./application/pom.xml
+	mvn install -Dmaven.test.skip=true -Dsurefire.useFile=false -f ./application/pom.xml
 	mvn clean clover:setup test clover:aggregate clover:clover
 
 docker:
-	#mvn clean deploy -DskipTests=true
+	# mvn clean deploy -DskipTests=true
 	# mvn clean package -DskipTests=true
 	@cp application/target/interview-application-0.0.1.jar docker
 	@cp -R ./application/environment docker
