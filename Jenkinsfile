@@ -20,25 +20,16 @@ pipeline {
                 expression {
                     return isRunningMaster()
                 }
-
-                steps {
-                    parallel(
-                            a: {
-                                sh 'make docker'
-                            },
-                            b: {
-                                sh 'tree'
-                            }
-                    )
-
-//                    withStagingCredentials {
-//                        awsNonProduction.publishImage(utils.getVersion())
-//                    }
-
-//                    withProductionCredentials {
-//                        awsNonProduction.publishImage(utils.getVersion())
-//                    }
-                }
+            }
+            steps {
+                parallel(
+                    a: {
+                        sh 'make docker'
+                    },
+                    b: {
+                        sh 'tree'
+                    }
+                )
             }
         }
     }
