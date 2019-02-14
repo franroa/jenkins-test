@@ -18,6 +18,4 @@ NON_PRODUCTION_AWS_ACCOUNT?="..."
 
 unit-test:
 	./kickstart.sh
-	mvn --batch-mode --show-version --update-snapshots --errors clean install -Dmaven.test.skip=true -Dsurefire.useFile=false -f ./pom.xml
-	mvn clean clover:setup test clover:aggregate clover:clover ./application/pom.xml
-	mvn clean clover:setup test clover:aggregate clover:clover ./client/pom.xml
+	mvn --batch-mode --show-version --update-snapshots --errors clean clover:setup test clover:aggregate clover:clover -Dsurefire.useFile=false -f ./pom.xml
