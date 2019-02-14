@@ -1,15 +1,5 @@
 #!/usr/bin/env groovy
 
-
-//    TODO
-
-//    Create Docker Image
-//
-//    Integration Test
-//
-//    Deploy if I'm on the master
-
-
 pipeline {
     agent any
     stages {
@@ -19,19 +9,45 @@ pipeline {
             }
         }
 
-        stage('Unit Test and package') {
+        stage('Unit/Integration Test') {
             steps {
-                parallel(
-                        a: {
-                            sh 'mkdir secrets'
-                            sh 'ls'
-                            sh 'make unit-test'
-                        },
-                        b: {
-                            sh 'tree'
-                        }
-                )
+                sh 'make test'
             }
         }
+
+        if (isRunningMaster()) {
+            stage('Package') {
+                steps {
+                    parallel(
+                            a: {
+                                sh 'make docker'
+                            },
+                            b: {
+                                sh 'tree'
+                            }
+                    )
+                }
+            }
+
+//            stage('Publish staging image') {
+//                steps {
+//                    withStagingCredentials {
+//                        awsNonProduction.publishImage(utils.getVersion())
+//                    }
+//                }
+//            }
+//
+//            stage('Publish production image') {
+//                steps {
+//                    withProductionCredentials {
+//                        awsNonProduction.publishImage(utils.getVersion())
+//                    }
+//                }
+//            }
+        }
     }
+}
+
+boolean isRunningMaster() {
+    return env.BRANCH_NAME == 'master'
 }
