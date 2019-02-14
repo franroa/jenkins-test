@@ -15,36 +15,30 @@ pipeline {
             }
         }
 
-        script {
-            if (isRunningMaster()) {
-                stage('Package') {
-                    steps {
-                        parallel(
-                                a: {
-                                    sh 'make docker'
-                                },
-                                b: {
-                                    sh 'tree'
-                                }
-                        )
-                    }
+        stage('Publish') {
+            when {
+                expression {
+                    return isRunningMaster()
                 }
 
-//            stage('Publish staging image') {
-//                steps {
+                steps {
+                    parallel(
+                            a: {
+                                sh 'make docker'
+                            },
+                            b: {
+                                sh 'tree'
+                            }
+                    )
+
 //                    withStagingCredentials {
 //                        awsNonProduction.publishImage(utils.getVersion())
 //                    }
-//                }
-//            }
-//
-//            stage('Publish production image') {
-//                steps {
+
 //                    withProductionCredentials {
 //                        awsNonProduction.publishImage(utils.getVersion())
 //                    }
-//                }
-//            }
+                }
             }
         }
     }
