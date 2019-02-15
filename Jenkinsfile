@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 STAGING_AWS_ACCOUNT_NUMBER = "...";
-SERVICE = 'interview_service'
+SERVICE = 'interview'
 
 
 node {
