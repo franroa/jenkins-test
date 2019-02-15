@@ -9,9 +9,9 @@ node {
         checkout scm
     }
 
-//    stage('Unit/Integration Test') {
-//        sh 'make test'
-//    }
+    stage('Unit/Integration Test') {
+        sh 'make test'
+    }
 
     if (isRunningMaster()) {
         def version = getVersion()
