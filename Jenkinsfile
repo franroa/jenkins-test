@@ -21,7 +21,7 @@ node {
         }
 
         stage('Publish image') {
-            def repo = "franroa/interview" // TODO to be replaced by the AWS' ecr
+            def repo = "franroa" // TODO to be replaced by the AWS' ecr
 
             sh """
                 docker tag "${SERVICE}:${version}" "${repo}/${SERVICE}:${version}"
